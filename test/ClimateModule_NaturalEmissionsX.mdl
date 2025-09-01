@@ -1,0 +1,3769 @@
+{UTF-8}
+********************************************************
+	.climatemodule naturalemissions
+********************************************************~
+		<?xml version="1.0" encoding="UTF-8"?>
+		<richtext version="1.0.0.0" xmlns="http://www.wxwidgets.org">
+		  <paragraphlayout textcolor="#000000" fontpointsize="9" fontfamily="70" \
+		fontstyle="90" fontweight="400" fontunderlined="0" fontface="Segoe UI" \
+		alignment="1" parspacingafter="10" parspacingbefore="0" linespacing="10" \
+		margin-left="5,4098" margin-right="5,4098" margin-top="5,4098" \
+		margin-bottom="5,4098">
+		    <paragraph>
+		      <text></text>
+		    </paragraph>
+		  </paragraphlayout>
+		</richtext>
+	|
+
+"Non-Linear Lifetime of N2O"=
+	135 - RAMP(0.3, 1900, 1950)
+	~	Years
+	~		|
+
+"Non-Linear Lifetime of CH4"=
+	8 + RAMP( 0.01, 1900, 2000) - RAMP( 0.02, 2000, 2100)
+	~	Years
+	~		|
+
+Net CH4 Emissions in MTonCH4=
+	(Natural CH4 Emissions-Total CH4 Breakdown) / Mt CH4 to tCH4
+	~	MTonCH4/Year
+	~		|
+
+Airborne Fraction=
+	(Total C Emission + CH4 Oxidation + Flux Humus to Atmosphere + Flux Biomass to Atmosphere\
+		 -  Flux Atmosphere to Biomass - Flux Atmosphere to Ocean)/
+	(MAX(Total C Emission, 1))
+	~	Dmnl
+	~		|
+
+Net Primary Productivity=
+	CO2 to C*(Flux Atmosphere to Biomass-Flux Biomass to Humus)*TonCO2 to MTonCO2
+	~	MTonCO2/Year
+	~		|
+
+Heat Content 0 700m=
+	(Heat in Deep Ocean 1) * Conversion to ZJ
+	~	ZJ
+	~		|
+
+Heat Content 700 2000m=
+	(Heat in Deep Ocean 2) * Conversion to ZJ
+	~	ZJ
+	~		|
+
+Heat Content Ocean=
+	(Heat in Deep Ocean 1 + Heat in Deep Ocean 2 + Heat in Deep Ocean 3) * Conversion to ZJ
+	~	ZJ
+	~		|
+
+Effective Sensitivity of Temperature on N2O Flux=
+	0.01
+	~	1/DegreesC [0,0.04,0.001]
+	~		|
+
+Baseline Natural Flux=
+	1.65e+07
+	~	TonN2O/Year [1e+07,2e+07,1e+06]
+	~		|
+
+Effect of Warming on N2O Release from Biological Activity=
+	1 + Effective Sensitivity of Temperature on N2O Flux * Temperature Change from Preindustrial
+	~	Dmnl
+	~		|
+
+Hist Conc N2O= WITH LOOKUP (
+	Time,
+		([(0,0)-(10,10)],(1900,279.454),(1901,279.613),(1902,279.861),(1903,280.156),(1904,\
+		280.432),(1905,280.705),(1906,280.98),(1907,281.276),(1908,281.611),(1909,281.95),(\
+		1910,282.314),(1911,282.721),(1912,283.019),(1913,283.362),(1914,283.716),(1915,284.047\
+		),(1916,284.312),(1917,284.615),(1918,284.805),(1919,284.851),(1920,284.929),(1921,\
+		285.039),(1922,285.17),(1923,285.467),(1924,285.605),(1925,285.652),(1926,285.692),\
+		(1927,285.74),(1928,285.833),(1929,285.891),(1930,285.938),(1931,286.124),(1932,286.222\
+		),(1933,286.371),(1934,286.467),(1935,286.587),(1936,286.747),(1937,286.951),(1938,\
+		287.191),(1939,287.387),(1940,287.619),(1941,287.864),(1942,288.138),(1943,288.781)\
+		,(1944,289),(1945,289.227),(1946,289.427),(1947,289.511),(1948,289.556),(1949,289.598\
+		),(1950,289.739),(1951,289.86),(1952,290.025),(1953,290.334),(1954,290.548),(1955,290.844\
+		),(1956,291.187),(1957,291.512),(1958,291.772),(1959,291.987),(1960,292.283),(1961,\
+		292.602),(1962,292.945),(1963,293.327),(1964,293.685),(1965,294.045),(1966,294.453)\
+		,(1967,294.86),(1968,295.269),(1969,295.681),(1970,296.098),(1971,296.522),(1972,296.955\
+		),(1973,297.399),(1974,297.855),(1975,298.326),(1976,298.814),(1977,299.319),(1978,\
+		299.845),(1979,300.393),(1980,300.965),(1981,301.562),(1982,302.187),(1983,302.842)\
+		,(1984,303.528),(1985,304.247),(1986,305.002),(1987,305.793),(1988,306.624),(1989,307.831\
+		),(1990,308.683),(1991,309.233),(1992,309.725),(1993,310.099),(1994,310.808),(1995,\
+		311.279),(1996,312.298),(1997,313.183),(1998,313.907),(1999,314.709),(2000,315.759)\
+		,(2001,316.493),(2002,317.101),(2003,317.73),(2004,318.357),(2005,319.13),(2006,319.933\
+		),(2007,320.646),(2008,321.575),(2009,322.275),(2010,323.141),(2011,324.159),(2012,\
+		325.005),(2013,325.919),(2014,326.988) ))
+	~	
+	~		|
+
+Net Ocean to Atmosphere Flux CO2=
+	-Flux Atmosphere to Ocean * TonCO2 to MTonCO2 * CO2 to C
+	~	MTonCO2/Year
+	~		|
+
+Heat Uptake=
+	(Effective Radiative Forcing - Feedback Cooling) * Conversion to ZJ
+	~	ZJ/Year
+	~		|
+
+J to ZJ=
+	1e+21
+	~	J/ZJ
+	~		|
+
+second to years=
+	60*60*24*365.24
+	~	sec/Year
+	~		|
+
+Conversion to ZJ=
+	Earth Surface Area*second to years*"unit W to J/s"/J to ZJ
+	~	m*m*ZJ/(W*Year)
+	~		|
+
+"unit W to J/s"=
+	1
+	~	J/sec/W
+	~		|
+
+Carbon Pool Atmosphere=
+	C in Atmosphere*CO2 to C*TonCO2 to MTonCO2
+	~	MTonCO2
+	~		|
+
+Carbon Pool Plant=
+	C in Biomass * CO2 to C * TonCO2 to MTonCO2
+	~	MTonCO2
+	~		|
+
+Carbon Pool Soil=
+	C in Humus * CO2 to C * TonCO2 to MTonCO2
+	~	MTonCO2
+	~		|
+
+KtN2O to tN2O=
+	1000
+	~	TonN2O/KTonN2O
+	~		|
+
+Mt CH4 to tCH4=
+	1e+06
+	~	TonCH4/MTonCH4
+	~		|
+
+Net Land to Atmosphere Flux CO2=
+	(Flux Biomass to Atmosphere+Flux Humus to Atmosphere-Flux Atmosphere to Biomass) * TonCO2 to MTonCO2\
+		 *CO2 to C
+	~	MTonCO2/Year
+	~		|
+
+TonCO2 to MTonCO2=
+	1e-06
+	~	MTonCO2/TonCO2
+	~		|
+
+********************************************************
+	.climatemodule
+********************************************************~
+		<?xml version="1.0" encoding="UTF-8"?>
+		<richtext version="1.0.0.0" xmlns="http://www.wxwidgets.org">
+		  <paragraphlayout textcolor="#000000" fontpointsize="9" fontfamily="70" \
+		fontstyle="90" fontweight="400" fontunderlined="0" fontface="Segoe UI" \
+		alignment="1" parspacingafter="10" parspacingbefore="0" linespacing="10" \
+		margin-left="5,4098" margin-right="5,4098" margin-top="5,4098" \
+		margin-bottom="5,4098">
+		    <paragraph>
+		      <text></text>
+		    </paragraph>
+		  </paragraphlayout>
+		</richtext>
+	|
+
+INIT C in Atmosphere=
+	Atmospheric CO2 Law Dome 1850*GtC to TonC*ppm to GtC
+	~	TonC
+	~	Initial carbon in atmosphere.
+	|
+
+Natural N2O Emission=
+	Baseline Natural Flux *Effect of Warming on N2O Release from Biological Activity
+	~	TonN2O/Year
+	~		|
+
+Total N2O Breakdown=
+	N2O in Atmosphere /Atmospheric Lifetime of N2O
+	~	TonN2O/Year
+	~		|
+
+Atmospheric Lifetime of N2O=
+	120
+	~	Year
+	~		|
+
+Earth Surface Area=
+	5.10064e+14
+	~	m*m
+	~		|
+
+Total N2O Emission=
+	Total N2O Emissions * KtN2O to tN2O + Natural N2O Emission
+	~	TonN2O/Year
+	~		|
+
+Total CH4 Emission=
+	Total CH4 Emissions * Mt CH4 to tCH4 + Natural CH4 Emissions Flux Biosphere to CH4 Natural
+	~	TonCH4/Year
+	~		|
+
+C in Humus= INTEG (
+	Flux Biomass to Humus-Flux Humus to Atmosphere-Flux Humus to CH4,
+		INIT C in Humus)
+	~	TonC
+	~	Carbon in humus.
+	|
+
+Fractional Rate of CH4 Released from Humus to Atm=
+	0.00015
+	~	1/Year
+	~		|
+
+CH4 Oxidation=
+	CH4 to CO2 via Oxidation in TonC
+	~	TonC/Year
+	~		|
+
+C to CH4=
+	16/12
+	~	TonCH4/TonC
+	~		|
+
+Flux Humus to CH4=
+	C in Humus * 
+	(Fractional Rate of CH4 Released from Humus to Atm * Effect of Warming on CH4 Release from Biological Activity\
+		)
+	~	TonC/Year
+	~	Does not factor C release from Permafrost and Clathrate
+	|
+
+Flux Biomass to CH4=
+	C in Biomass*Effect of Warming on CH4 Release from Biological Activity*Fractional Rate of CH4 Released from Biomass to Atm
+	~	TonC/Year
+	~		|
+
+Effect of Temperature on Land CH4 Flux=
+	0.01
+	~	1/DegreesC
+	~		|
+
+C in Biomass= INTEG (
+	Flux Atmosphere to Biomass-Flux Biomass to Atmosphere-Flux Biomass to CH4-Flux Biomass to Humus\
+		,
+		INIT C in Biomass)
+	~	TonC
+	~	Carbon in biosphere (biomass, litter, and humus)
+	|
+
+Fractional Rate of CH4 Released from Biomass to Atm=
+	1e-05
+	~	1/Year
+	~		|
+
+Effect of Warming on CH4 Release from Biological Activity=
+	1 / (1 - Effect of Temperature on Land CH4 Flux * Temperature Change from Preindustrial\
+		)
+	~	Dmnl
+	~		|
+
+C in Atmosphere= INTEG (
+	CH4 Oxidation+Flux Biomass to Atmosphere+Flux Humus to Atmosphere+Total C Emission-Carbon Removal Rate\
+		-Flux Atmosphere to Biomass-Flux Atmosphere to Ocean,
+		INIT C in Atmosphere)
+	~	TonC
+	~	Carbon in atmosphere.
+	|
+
+Natural CH4 Emissions Flux Biosphere to CH4 Natural=
+	(Flux Biomass to CH4+Flux Humus to CH4) * C to CH4
+	~	TonCH4/Year
+	~		|
+
+Total CH4 Breakdown=
+	CH4 in Atmosphere/Atmospheric Lifetime of CH4
+	~	TonCH4/Year
+	~	Oxidation Losses
+	|
+
+Natural CH4 Emissions=
+	2.3e+08
+	~	TonCH4/Year
+	~	There is a substantial discrepancy between estimates of natural global \
+		annual methane emissions from bottom-up and top-down methods, which yield \
+		values of  370 Mt and  215 Mt, respectively (Saunois et al. 2020). UNEP \
+		Global Methane Assessment 2030 Baseline Report
+	|
+
+ss370 Conc N2O= WITH LOOKUP (
+	Time,
+		([(0,0)-(10,10)],(1900,279.454),(1901,279.613),(1902,279.861),(1903,280.156),(1904,\
+		280.432),(1905,280.705),(1906,280.98),(1907,281.276),(1908,281.611),(1909,281.95),(\
+		1910,282.314),(1911,282.721),(1912,283.019),(1913,283.362),(1914,283.716),(1915,284.047\
+		),(1916,284.312),(1917,284.615),(1918,284.805),(1919,284.851),(1920,284.929),(1921,\
+		285.039),(1922,285.17),(1923,285.467),(1924,285.605),(1925,285.652),(1926,285.692),\
+		(1927,285.74),(1928,285.833),(1929,285.891),(1930,285.938),(1931,286.124),(1932,286.222\
+		),(1933,286.371),(1934,286.467),(1935,286.587),(1936,286.747),(1937,286.951),(1938,\
+		287.191),(1939,287.387),(1940,287.619),(1941,287.864),(1942,288.138),(1943,288.781)\
+		,(1944,289),(1945,289.227),(1946,289.427),(1947,289.511),(1948,289.556),(1949,289.598\
+		),(1950,289.739),(1951,289.86),(1952,290.025),(1953,290.334),(1954,290.548),(1955,290.844\
+		),(1956,291.187),(1957,291.512),(1958,291.772),(1959,291.987),(1960,292.283),(1961,\
+		292.602),(1962,292.945),(1963,293.327),(1964,293.685),(1965,294.045),(1966,294.453)\
+		,(1967,294.86),(1968,295.269),(1969,295.681),(1970,296.098),(1971,296.522),(1972,296.955\
+		),(1973,297.399),(1974,297.855),(1975,298.326),(1976,298.814),(1977,299.319),(1978,\
+		299.845),(1979,300.393),(1980,300.965),(1981,301.562),(1982,302.187),(1983,302.842)\
+		,(1984,303.528),(1985,304.247),(1986,305.002),(1987,305.793),(1988,306.624),(1989,307.831\
+		),(1990,308.683),(1991,309.233),(1992,309.725),(1993,310.099),(1994,310.808),(1995,\
+		311.279),(1996,312.298),(1997,313.183),(1998,313.907),(1999,314.709),(2000,315.759)\
+		,(2001,316.493),(2002,317.101),(2003,317.73),(2004,318.357),(2005,319.13),(2006,319.933\
+		),(2007,320.646),(2008,321.575),(2009,322.275),(2010,323.141),(2011,324.159),(2012,\
+		325.005),(2013,325.919),(2014,326.988),(2015,328.18),(2016,329.076),(2017,329.791),\
+		(2018,330.565),(2019,331.356),(2020,332.164),(2021,332.989),(2022,333.83),(2023,334.684\
+		),(2024,335.552),(2025,336.432),(2026,337.327),(2027,338.234),(2028,339.154),(2029,\
+		340.088),(2030,341.034),(2031,341.993),(2032,342.963),(2033,343.941),(2034,344.928)\
+		,(2035,345.924),(2036,346.928),(2037,347.941),(2038,348.962),(2039,349.991),(2040,351.029\
+		),(2041,352.075),(2042,353.128),(2043,354.187),(2044,355.253),(2045,356.325),(2046,\
+		357.403),(2047,358.487),(2048,359.577),(2049,360.674),(2050,361.776),(2051,362.884)\
+		,(2052,363.998),(2053,365.116),(2054,366.238),(2055,367.364),(2056,368.495),(2057,369.63\
+		),(2058,370.77),(2059,371.913),(2060,373.061),(2061,374.212),(2062,375.368),(2063,376.528\
+		),(2064,377.691),(2065,378.858),(2066,380.028),(2067,381.203),(2068,382.38),(2069,383.562\
+		),(2070,384.747),(2071,385.935),(2072,387.127),(2073,388.322),(2074,389.52),(2075,390.721\
+		),(2076,391.924),(2077,393.131),(2078,394.341),(2079,395.553),(2080,396.769),(2081,\
+		397.987),(2082,399.208),(2083,400.434),(2084,401.663),(2085,402.897),(2086,404.134)\
+		,(2087,405.375),(2088,406.62),(2089,407.868),(2090,409.12),(2091,410.376),(2092,411.636\
+		),(2093,412.898),(2094,414.165),(2095,415.434),(2096,416.707),(2097,417.982),(2098,\
+		419.261),(2099,420.544),(2100,421.829) ))
+	~	ppb
+	~		|
+
+ss370 Conc CH4= WITH LOOKUP (
+	Time,
+		([(0,0)-(10,10)],(1900,925.552),(1901,928.8),(1902,932.731),(1903,936.783),(1904,942.114\
+		),(1905,947.443),(1906,953.092),(1907,959.156),(1908,964.085),(1909,969.398),(1910,\
+		974.787),(1911,979.465),(1912,983.606),(1913,986.242),(1914,988.611),(1915,991.461)\
+		,(1916,998.454),(1917,1003.57),(1918,1010.13),(1919,1017.63),(1920,1025.07),(1921,1032.2\
+		),(1922,1039.1),(1923,1045.13),(1924,1049.45),(1925,1052.16),(1926,1053.6),(1927,1055.77\
+		),(1928,1060.64),(1929,1066.66),(1930,1072.64),(1931,1077.49),(1932,1081.96),(1933,\
+		1086.54),(1934,1091.77),(1935,1097.08),(1936,1101.83),(1937,1106.32),(1938,1110.63)\
+		,(1939,1116.91),(1940,1120.12),(1941,1123.24),(1942,1128.19),(1943,1132.66),(1944,1136.27\
+		),(1945,1139.32),(1946,1143.66),(1947,1149.64),(1948,1155.63),(1949,1160.35),(1950,\
+		1163.82),(1951,1168.81),(1952,1174.31),(1953,1183.36),(1954,1194.43),(1955,1206.65)\
+		,(1956,1221.1),(1957,1235.8),(1958,1247.42),(1959,1257.32),(1960,1264.12),(1961,1269.46\
+		),(1962,1282.57),(1963,1300.79),(1964,1317.37),(1965,1331.06),(1966,1342.24),(1967,\
+		1354.27),(1968,1371.65),(1969,1389.34),(1970,1411.1),(1971,1431.12),(1972,1449.29),\
+		(1973,1462.86),(1974,1476.14),(1975,1491.74),(1976,1509.11),(1977,1527.68),(1978,1546.89\
+		),(1979,1566.16),(1980,1584.94),(1981,1602.65),(1982,1618.73),(1983,1632.62),(1984,\
+		1643.5),(1985,1655.91),(1986,1668.79),(1987,1683.75),(1988,1693.94),(1989,1705.63),\
+		(1990,1717.4),(1991,1729.33),(1992,1740.14),(1993,1743.1),(1994,1748.62),(1995,1755.23\
+		),(1996,1757.19),(1997,1761.5),(1998,1770.29),(1999,1778.2),(2000,1778.01),(2001,1776.53\
+		),(2002,1778.96),(2003,1783.59),(2004,1784.23),(2005,1783.36),(2006,1783.42),(2007,\
+		1788.95),(2008,1798.42),(2009,1802.1),(2010,1807.85),(2011,1813.07),(2012,1815.26),\
+		(2013,1822.58),(2014,1831.47),(2015,1841.93),(2016,1851.59),(2017,1874.51),(2018,1889.79\
+		),(2019,1905.45),(2020,1921.44),(2021,1937.74),(2022,1954.37),(2023,1971.4),(2024,1988.79\
+		),(2025,2006.51),(2026,2024.53),(2027,2042.82),(2028,2061.37),(2029,2080.15),(2030,\
+		2099.14),(2031,2118.32),(2032,2137.55),(2033,2156.7),(2034,2175.76),(2035,2194.75),\
+		(2036,2213.66),(2037,2232.5),(2038,2251.27),(2039,2269.97),(2040,2288.59),(2041,2307.15\
+		),(2042,2325.65),(2043,2344.1),(2044,2362.51),(2045,2380.87),(2046,2399.19),(2047,2417.46\
+		),(2048,2435.69),(2049,2453.87),(2050,2472),(2051,2490.08),(2052,2508.18),(2053,2526.34\
+		),(2054,2544.55),(2055,2562.82),(2056,2581.13),(2057,2599.48),(2058,2617.86),(2059,\
+		2636.26),(2060,2654.69),(2061,2673.13),(2062,2691.61),(2063,2710.12),(2064,2728.68)\
+		,(2065,2747.26),(2066,2765.87),(2067,2784.5),(2068,2803.14),(2069,2821.8),(2070,2840.45\
+		),(2071,2859.11),(2072,2877.79),(2073,2896.52),(2074,2915.29),(2075,2934.08),(2076,\
+		2952.91),(2077,2971.75),(2078,2990.61),(2079,3009.48),(2080,3028.35),(2081,3047.22)\
+		,(2082,3065.96),(2083,3084.46),(2084,3102.73),(2085,3120.78),(2086,3138.62),(2087,3156.25\
+		),(2088,3173.7),(2089,3190.97),(2090,3208.07),(2091,3225.01),(2092,3241.8),(2093,3258.48\
+		),(2094,3275.04),(2095,3291.48),(2096,3307.83),(2097,3324.06),(2098,3340.2),(2099,3356.24\
+		),(2100,3372.18) ))
+	~	ppb
+	~		|
+
+Atmospheric Lifetime of CH4=
+	9.3
+	~	Year
+	~	9-12 Years
+		9.3
+	|
+
+"2xCO2 Forcing"=
+	CO2 Radiative Forcing Coefficient*LN(2)
+	~	W/(Meter*Meter)
+	~	Radiative forcing at 2x CO2 equivalent.
+	|
+
+a N2O=
+	c1 * SQRT(Atmospheric Concentration N2O * Dmnl Adjustment ppb)
+	~	W/(m*m)
+	~		|
+
+a prime=
+	IF THEN ELSE(Atmospheric Concentration CO2 > C a max, d1 - (b1^2 / (4*a1) ), 
+	
+	IF THEN ELSE(Atmospheric Concentration CO2 < Atmospheric CO2 Concentration Preindustrial\
+		, d1, 
+	
+	d1 + a1*(Atmospheric Concentration CO2-Atmospheric CO2 Concentration Preindustrial)^\
+		2 + b1 * (Atmospheric Concentration CO2-Atmospheric CO2 Concentration Preindustrial\
+		)
+	
+	 ) )
+	~	W/(m*m)
+	~		|
+
+a1=
+	-2.4785e-07
+	~	W/(m*m*ppm*ppm)
+	~		|
+
+a2=
+	-0.00034197
+	~	W/(m*m)
+	~		|
+
+a3=
+	-8.9603e-05
+	~	W/(m*m)
+	~		|
+
+Area=
+	5.1e+14
+	~	Meter*Meter
+	~	Global surface area.
+	|
+
+Atmospheric and Upper Ocean Heat Capacity=
+	Upper Layer Volume Vu*Volumetric Heat Capacity/Area
+	~	Year*W/(Meter*Meter*DegreesC)
+	~	Volumetric heat capacity for the land, atmosphere, and, upper ocean layer.
+	|
+
+Atmospheric CH4 Concentration 1900 AR6=
+	925
+	~	ppb
+	~	https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_AnnexIII.p\
+		df  pg 2141
+	|
+
+Atmospheric CH4 Concentration Preindustrial=
+	731.41
+	~	ppb
+	~		|
+
+Atmospheric CO2 Concentration 1900 AR6=
+	296.4
+	~	ppm
+	~		|
+
+Atmospheric CO2 Concentration Preindustrial=
+	277.15
+	~	ppm
+	~	Meinhausen et al 2020
+	|
+
+Atmospheric CO2 Law Dome 1850=
+	284.7
+	~	ppm
+	~	Historical CO2 record derived from a spline fit (20 year cutoff) of the Law Dome \
+		DE08 and DE08-2 ice cores for year 1850
+		https://www.ncei.noaa.gov/pub/data/paleo/icecore/antarctica/law/law_co2.txt
+	|
+
+Atmospheric Concentration CH4=
+	CH4 in Atmosphere * TonCH4 to ppb
+	~	ppb
+	~		|
+
+Atmospheric Concentration CO2=
+	C in Atmosphere/GtC to TonC/ppm to GtC
+	~	ppm
+	~	Converts weight of CO2 in atmosphere to concentration (ppm CO2). Source of \
+		Historical Data:
+		Etheridge, D.M., Steele, L.P., Langenfelds, R.L., Francey, R.J., Barnola, \
+		J.-M., Morgan, V.I. 1998. Historical CO2 records from the Law Dome DE08, \
+		DE08-2, and DSS ice cores. In Trends: A Compendium of Data on Global \
+		Change. Carbon Dioxide Information Analysis Center, Oak Ridge National \
+		Laboratory, U.S. Department of Energy, Oak Ridge, Tenn., U.S.A
+	|
+
+Atmospheric Concentration N2O=
+	N2O in Atmosphere * TonN2O to ppb
+	~	ppb
+	~		|
+
+Atmospheric N2O Concentration 1900 AR6=
+	278.9
+	~	ppb [270,290,1]
+	~	https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_AnnexIII.pdf  pg \
+		2141
+		278.9
+	|
+
+Atmospheric N2O Concentration Preindustrial=
+	273.87
+	~	ppb
+	~	Mein
+	|
+
+b1=
+	0.00075906
+	~	W/(m*m*ppm)
+	~		|
+
+b2=
+	0.00025455
+	~	W/(m*m)
+	~		|
+
+b3=
+	-0.00012462
+	~	W/(m*m)
+	~		|
+
+Biomass Res Time=
+	10.6
+	~	Year
+	~	Average residence time of carbon in biomass.
+	|
+
+Biostimulation Coefficient=
+	0.35
+	~	Dmnl
+	~	Coefficient for response of primary production to carbon concentration.
+	|
+
+Buff C Coeff=
+	3.92
+	~	Dmnl
+	~	Coefficient of carbon concentration influence on buffer factor.
+	|
+
+Buffer Factor=
+	Ref Buffer Factor*(C in Mixed Layer/Preindustrial C in Mixed Layer)^Buff C Coeff
+	~	Dmnl
+	~	Buffer factor for atmosphere/mixed ocean carbon equilibration.
+	|
+
+C a max=
+	Atmospheric CO2 Concentration Preindustrial - (b1 / (2*a1) )
+	~	ppm
+	~		|
+
+C Concentration Ratio=
+	C in Atmosphere/INIT C in Atmosphere
+	~	Dmnl
+	~	Current to initial carbon concentration in atmosphere.
+	|
+
+C in Deep Ocean 1= INTEG (
+	Diffusion Flux 1-Diffusion Flux 2,
+		INIT C in Deep Ocean 1)
+	~	TonC
+	~	Carbon in the first layer of deep ocean.
+	|
+
+C in Deep Ocean 1 per meter=
+	C in Deep Ocean 1/Layer Depth 1
+	~	TonC/Meter
+	~	Carbon in the first ocean layer per its meter.
+	|
+
+C in Deep Ocean 2= INTEG (
+	Diffusion Flux 2-Diffusion Flux 3,
+		INIT C in Deep Ocean 2)
+	~	TonC
+	~	Carbon in the second layer of deep ocean.
+	|
+
+C in Deep Ocean 2 per meter=
+	C in Deep Ocean 2/Layer Depth 2
+	~	TonC/Meter
+	~	Carbon in the second ocean layer per its meter.
+	|
+
+C in Deep Ocean 3= INTEG (
+	Diffusion Flux 3-Diffusion Flux 4,
+		INIT C in Deep Ocean 3)
+	~	TonC
+	~	Carbon in the third layer of deep ocean.
+	|
+
+C in Deep Ocean 3 per meter=
+	C in Deep Ocean 3/Layer Depth 3
+	~	TonC/Meter
+	~	Carbon in the third ocean layer per its meter.
+	|
+
+C in Deep Ocean 4= INTEG (
+	Diffusion Flux 4,
+		INIT C in Deep Ocean 4)
+	~	TonC
+	~	Carbon in the fourth layer of deep ocean.
+	|
+
+C in Deep Ocean 4 per meter=
+	C in Deep Ocean 4/Layer Depth 4
+	~	TonC/Meter
+	~	Carbon in the fourth ocean layer per its meter.
+	|
+
+C in Mixed Layer= INTEG (
+	Flux Atmosphere to Ocean-Diffusion Flux 1,
+		INIT C in Mixed Ocean)
+	~	TonC
+	~	Carbon in mixed layer.
+	|
+
+C in Mixed Layer per meter=
+	C in Mixed Layer/Mixed Layer Depth
+	~	TonC/Meter
+	~	Carbon in mixed layer per its meter.
+	|
+
+c1=
+	-0.0021492
+	~	W/(m*m)
+	~	*note: units is supposed to be W m-2 ppb-0.5 due to the sqrt in N, but \
+		here it's simplified to remove the ppb
+	|
+
+c2=
+	-0.00024357
+	~	W/(m*m)
+	~		|
+
+Carbon Removal Impact Slope=
+	1.1
+	~	
+	~		|
+
+Carbon Removal Rate=
+	Climate Policy Scenario * SMOOTH(RAMP(Reference CO2 Removal Rate, Climate Action Year\
+		, 2100), CDR Policy Transition Period )
+	~	TonC/Year
+	~	Climate Policy Scenario*SMOOTH(STEP(Carbon Removal Impact Slope*Reference \
+		Removal Rate, Climate Action Year), Climate Policy Transition Period)
+	|
+
+CDR Policy Transition Period=
+	1
+	~	Year
+	~		|
+
+CH4 Concentration Ratio=
+	CH4 in Atmosphere/INIT CH4 in Atmosphere
+	~	Dmnl
+	~		|
+
+CH4 in Atmosphere= INTEG (
+	Total CH4 Emission-Total CH4 Breakdown,
+		INIT CH4 in Atmosphere)
+	~	TonCH4
+	~		|
+
+CH4 Radiative Efficiency=
+	(a3 * SQRT(Atmospheric Concentration CH4 * Dmnl Adjustment ppb)) +
+	(b3 * SQRT(Atmospheric Concentration N2O* Dmnl Adjustment ppb)) +
+	d3
+	~	W/(m*m)
+	~	Meinshausen et al 2020
+	|
+
+CH4 Radiative Forcing=
+	IF THEN ELSE(Time<=2010,CH4 Radiative Forcing History,
+	IF THEN ELSE(RCP Scenario=0, CH4 Radiative Forcing RCP19,
+	IF THEN ELSE(RCP Scenario=1,CH4 Radiative Forcing RCP26,
+	IF THEN ELSE(RCP Scenario=2,CH4 Radiative Forcing RCP34,
+	IF THEN ELSE(RCP Scenario=3, CH4 Radiative Forcing RCP45, 
+	IF THEN ELSE(RCP Scenario=4, CH4 Radiative Forcing RCP60, 
+	CH4 Radiative Forcing RCP85
+	))))))
+	~	W/(Meter*Meter)
+	~	Radiative forcing from CH4 in the atmosphere.
+	|
+
+CH4 Radiative Forcing History=
+	TABLE CH4 Radiative Forcing(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Historical data for radiative forcing from CH4 in the atmosphere.
+	|
+
+CH4 Radiative Forcing New=
+	CH4 Radiative Efficiency
+	    * ( SQRT ( Atmospheric Concentration CH4 * Dmnl Adjustment ppb ) 
+	      - SQRT ( Atmospheric CH4 Concentration Preindustrial * Dmnl Adjustment ppb ) )
+	~	W/(m*m)
+	~		|
+
+CH4 Radiative Forcing RCP19=
+	TABLE CH4 Radiative Forcing SSP2 RCP19(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CH4 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 1.9).
+	|
+
+CH4 Radiative Forcing RCP26=
+	TABLE CH4 Radiative Forcing SSP2 RCP26(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CH4 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 2.6).
+	|
+
+CH4 Radiative Forcing RCP34=
+	TABLE CH4 Radiative Forcing SSP2 RCP34(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CH4 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+CH4 Radiative Forcing RCP45=
+	TABLE CH4 Radiative Forcing SSP2 RCP45(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CH4 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 4.5).
+	|
+
+CH4 Radiative Forcing RCP60=
+	TABLE CH4 Radiative Forcing SSP2 RCP60(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CH4 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 6.0).
+	|
+
+CH4 Radiative Forcing RCP85=
+	TABLE CH4 Radiative Forcing SSP2 RCP85(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CH4 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+CH4 to CO2 via Oxidation in TonC=
+	(Molar mass of C/Molar mass of CH4/Dmnl Adjustment TonCO2) * Total CH4 Breakdown
+	~	TonC/Year
+	~		|
+
+Climate Action Year=
+	2020
+	~	Year
+	~		|
+
+Climate Feedback Parameter=
+	"2xCO2 Forcing"/Climate Sensitivity to 2xCO2
+	~	Watt/(Meter*Meter)/DegreesC
+	~	Determines feedback effect from temperature increase.
+	|
+
+Climate Policy Scenario=
+	0
+	~	Dmnl
+	~	0: No climate policy
+		1: Climate policy
+	|
+
+Climate Sensitivity to 2xCO2=
+	3
+	~	DegreesC
+	~	Equilibrium temperature change in response to a 2xCO2 equivalent change in \
+		radiative forcing. Deterministic = 3,  Low=2, High =4.5.
+	|
+
+CO2 Radiative Forcing AIM RCP60=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of CO2 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by AIM (RCP 6.0).
+	|
+
+CO2 Radiative Forcing Coefficient=
+	a prime + a N2O
+	~	W/(m*m)
+	~		|
+
+CO2 Radiative Forcing IMAGE RCP26=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of CO2 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by IMAGE (RCP \
+		2.6).
+	|
+
+CO2 Radiative Forcing Indicator=
+	CO2 Radiative Forcing New
+	~	W/(Meter*Meter)
+	~		|
+
+CO2 Radiative Forcing MESSAGE RCP85=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of CO2 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+CO2 Radiative Forcing MiniCAM RCP45=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of CO2 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MiniCAM (RCP \
+		4.5).
+	|
+
+CO2 Radiative Forcing New=
+	CO2 Radiative Forcing Coefficient * LN(Atmospheric Concentration CO2 / Atmospheric CO2 Concentration Preindustrial\
+		)
+	~	W/(m*m)
+	~	Radiative forcing from CO2 in the atmosphere. Source of Historical Data:
+		IIASA RCP Database
+		https://tntcat.iiasa.ac.at:8743/RcpDb/dsd?Action=htmlpage&page=welcome
+	|
+
+CO2 to C=
+	3.664
+	~	TonCO2/TonC
+	~		|
+
+Current year=
+	2023
+	~	Year
+	~		|
+
+d1=
+	5.2488
+	~	W/(m*m)
+	~		|
+
+d2=
+	0.12173
+	~	W/(m*m)
+	~		|
+
+d3=
+	0.045194
+	~	W/(m*m)
+	~		|
+
+Deep Ocean 1 Heat Capacity=
+	Lower Layer Volume Vu 1*Volumetric Heat Capacity/Area
+	~	Year*W/(Meter*Meter*DegreesC)
+	~	Volumetric heat capacity for the first layer of the deep ocean.
+	|
+
+Deep Ocean 2 Heat Capacity=
+	Lower Layer Volume Vu 2*Volumetric Heat Capacity/Area
+	~	Year*W/(Meter*Meter*DegreesC)
+	~	Volumetric heat capacity for the second layer of the deep ocean.
+	|
+
+Deep Ocean 3 Heat Capacity=
+	Lower Layer Volume Vu 3*Volumetric Heat Capacity/Area
+	~	Year*W/(Meter*Meter*DegreesC)
+	~	Volumetric heat capacity for the third layer of the deep ocean.
+	|
+
+Deep Ocean 4 Heat Capacity=
+	Lower Layer Volume Vu 4*Volumetric Heat Capacity/Area
+	~	Year*W/(Meter*Meter*DegreesC)
+	~	Volumetric heat capacity for the fourth layer of the deep ocean.
+	|
+
+Density=
+	1000
+	~	kg/(m*m*m)
+	~	Density of water, i.e., mass per volume of water.
+	|
+
+Diffusion Flux 1=
+	(C in Mixed Layer per meter-C in Deep Ocean 1 per meter)*Eddy diff coeff M 1/Mean Depth of Adjacent M 1 Layers
+	~	TonC/Year
+	~	Diffusion flux between mixed and the first ocean layers.
+	|
+
+Diffusion Flux 2=
+	(C in Deep Ocean 1 per meter-C in Deep Ocean 2 per meter)*Eddy diff coeff 1 2/Mean Depth of Adjacent 1 2 Layers
+	~	TonC/Year
+	~	Diffusion flux between the first and the second ocean layers.
+	|
+
+Diffusion Flux 3=
+	(C in Deep Ocean 2 per meter-C in Deep Ocean 3 per meter)*Eddy diff coeff 2 3/Mean Depth of Adjacent 2 3 Layers
+	~	TonC/Year
+	~	Diffusion flux between the second and the third ocean layers.
+	|
+
+Diffusion Flux 4=
+	(C in Deep Ocean 3 per meter-C in Deep Ocean 4 per meter)*Eddy diff coeff 3 4/Mean Depth of Adjacent 3 4 Layers
+	~	TonC/Year
+	~	Diffusion flux between the third and the fourth ocean layers.
+	|
+
+Dimensionless Time=
+	1
+	~	1/Year
+	~	Parameter to make table data dimensionless.
+	|
+
+Dmnl Adjustment ppb=
+	1
+	~	1/ppb
+	~		|
+
+Dmnl Adjustment ppm=
+	1
+	~	1/ppm
+	~		|
+
+Dmnl Adjustment TonCO2=
+	1
+	~	gC*TonCH4/(gCH4*TonC)
+	~		|
+
+Eddy diff coeff 1 2=
+	Eddy diff coeff index 1 2*Eddy diff coeff mean 1 2
+	~	Meter*Meter/Year
+	~	Coefficient of carbon diffusion to the second layer of deep ocean.
+	|
+
+Eddy diff coeff 2 3=
+	Eddy diff coeff index 2 3*Eddy diff coeff mean 2 3
+	~	Meter*Meter/Year
+	~	Coefficient of carbon diffusion to the third layer of deep ocean.
+	|
+
+Eddy diff coeff 3 4=
+	Eddy diff coeff index 3 4*Eddy diff coeff mean 3 4
+	~	Meter*Meter/Year
+	~	Coefficient of carbon diffusion to the fourth layer of deep ocean.
+	|
+
+Eddy diff coeff index 1 2=
+	1
+	~	Dmnl
+	~	Index of coefficient for rate at which carbon is mixed in the ocean due to \
+		eddy motion, where 1 is equivalent to the expected value of 4400 \
+		meter/meter/year.
+	|
+
+Eddy diff coeff index 2 3=
+	1
+	~	Dmnl
+	~	Index of coefficient for rate at which carbon is mixed in the ocean due to \
+		eddy motion, where 1 is equivalent to the expected value of 4400 \
+		meter/meter/year.
+	|
+
+Eddy diff coeff index 3 4=
+	1
+	~	Dmnl
+	~	Index of coefficient for rate at which carbon is mixed in the ocean due to \
+		eddy motion, where 1 is equivalent to the expected value of 4400 \
+		meter/meter/year.
+	|
+
+Eddy diff coeff index M 1=
+	1
+	~	Dmnl
+	~	Index of coefficient for rate at which carbon is mixed in the ocean due to \
+		eddy motion, where 1 is equivalent to the expected value of 4400 \
+		meter/meter/year.
+	|
+
+Eddy diff coeff M 1=
+	Eddy diff coeff index M 1*Eddy diff coeff mean M 1
+	~	Meter*Meter/Year
+	~	Coefficient of carbon diffusion to the first layer of deep ocean.
+	|
+
+Eddy diff coeff mean 1 2=
+	4400
+	~	Meter*Meter/Year
+	~	Expected value at which carbon is mixed in the ocean due to eddy motion.
+	|
+
+Eddy diff coeff mean 2 3=
+	4400
+	~	Meter*Meter/Year
+	~	Expected value at which carbon is mixed in the ocean due to eddy motion.
+	|
+
+Eddy diff coeff mean 3 4=
+	4400
+	~	Meter*Meter/Year
+	~	Expected value at which carbon is mixed in the ocean due to eddy motion.
+	|
+
+Eddy diff coeff mean M 1=
+	4400
+	~	Meter*Meter/Year
+	~	Expected value at which carbon is mixed in the ocean due to eddy motion.
+	|
+
+Effect of Temp on C Flux Atm ML=
+	1 - (Sensitivity of C flux to temp*Temperature Change from Preindustrial)
+	~	Dmnl
+	~		|
+
+Effective Radiative Forcing=
+	Total Radiative Forcing
+	~	W/(m*m)
+	~	Total radiative forcing from various factors in the atmosphere.
+	|
+
+Total CO2 Emissions= WITH LOOKUP (
+	Time,
+		([(0,0)-(10,10)],(1900,4465.96),(1901,4768.88),(1902,4835.69),(1903,5115.66),(1904,\
+		5244.75),(1905,5479.76),(1906,5710.02),(1907,6046.02),(1908,5993.61),(1909,6115.29)\
+		,(1910,6271.03),(1911,6113.83),(1912,6122.58),(1913,6265.77),(1914,5938.95),(1915,5864.56\
+		),(1916,6101.45),(1917,6227.24),(1918,6205.49),(1919,5833.87),(1920,6290.31),(1921,\
+		6065.15),(1922,6219.54),(1923,6673.12),(1924,6735.34),(1925,6795.89),(1926,6766.33)\
+		,(1927,7280.51),(1928,7308.5),(1929,7704.45),(1930,7679.53),(1931,7335.5),(1932,6651.92\
+		),(1933,6798.48),(1934,7038.37),(1935,7216.33),(1936,7612.65),(1937,7825.86),(1938,\
+		7580.8),(1939,7836.4),(1940,8156.9),(1941,8184.23),(1942,8268.32),(1943,8410.16),(1944\
+		,8377.77),(1945,7621.09),(1946,8344.52),(1947,9027.47),(1948,9393.94),(1949,9334.31\
+		),(1950,10044.7),(1951,11290.7),(1952,11518.8),(1953,11706.3),(1954,12085.4),(1955,\
+		12923.1),(1956,13695.2),(1957,14153.1),(1958,14642),(1959,14941.2),(1960,15353.9),(\
+		1961,15695.8),(1962,16083.7),(1963,16722.3),(1964,17266.3),(1965,17924.5),(1966,18518.2\
+		),(1967,19135.1),(1968,19720.5),(1969,20540.2),(1970,21457),(1971,21678.1),(1972,22109.2\
+		),(1973,23064.2),(1974,22861.4),(1975,22836.2),(1976,23873.4),(1977,24612.4),(1978,\
+		25215.4),(1979,25589),(1980,25266.7),(1981,24889.5),(1982,24681.5),(1983,25343.6),(\
+		1984,25945.1),(1985,26305.7),(1986,26803.4),(1987,27328.5),(1988,28027.4),(1989,28374.7\
+		),(1990,27966.7),(1991,28681.6),(1992,28688.8),(1993,28363.3),(1994,28376.7),(1995,\
+		28815.3),(1996,29248),(1997,32092.8),(1998,29798.2),(1999,29186.4),(2000,29661.9),(\
+		2001,29018.3),(2002,29933.4),(2003,30509.2),(2004,32433.5),(2005,33416.6),(2006,34631.9\
+		),(2007,35352.2),(2008,34451.2),(2009,34225.4),(2010,36133.8),(2011,37266),(2012,37953.9\
+		),(2013,38762.7),(2014,39630.9),(2100,39630.9) ))
+	~	TonCO2/Year
+	~		|
+
+Equil C in Mixed Layer=
+	Preindustrial C in Mixed Layer *Effect of Temp on C Flux Atm ML* (C in Atmosphere/Preindustrial C in Atmosphere\
+		)^(1/Buffer Factor)
+	~	TonC
+	~	Equilibrium carbon content of mixed layer.
+	|
+
+Equilibrium C per meter in Mixed Layer=
+	Equil C in Mixed Layer/Mixed Layer Depth
+	~	TonC/Meter
+	~		|
+
+Equilibrium Temperature=
+	CO2 Radiative Forcing New/(Climate Feedback Parameter*LN(2))
+	~	DegreesC
+	~	Ratio of Radiative Forcing to the Climate Feedback Parameter
+	|
+
+F Gases Radiative Forcing=
+	IF THEN ELSE(Time<=2010,F Gases Radiative Forcing History,
+	IF THEN ELSE(RCP Scenario=0, F Gases Radiative Forcing RCP19,
+	IF THEN ELSE(RCP Scenario=1,F Gases Radiative Forcing RCP26,
+	IF THEN ELSE(RCP Scenario=2,F Gases Radiative Forcing RCP34,
+	IF THEN ELSE(RCP Scenario=3, F Gases Radiative Forcing RCP45, 
+	IF THEN ELSE(RCP Scenario=4, F Gases Radiative Forcing RCP60, 
+	F Gases Radiative Forcing RCP85
+	))))))
+	~	W/(Meter*Meter)
+	~	Radiative forcing from F-gases (HFC and others) in the atmosphere.
+	|
+
+F Gases Radiative Forcing History=
+	TABLE F Gases Radiative Forcing(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Historical data for radiative forcing from CH4 in the atmosphere.
+	|
+
+F Gases Radiative Forcing RCP19=
+	TABLE F Gases Radiative Forcing SSP2 RCP19(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of f-gases radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 1.9).
+	|
+
+F Gases Radiative Forcing RCP26=
+	TABLE F Gases Radiative Forcing SSP2 RCP26(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of f-gases radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 2.6).
+	|
+
+F Gases Radiative Forcing RCP34=
+	TABLE F Gases Radiative Forcing SSP2 RCP34(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of f gases radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+F Gases Radiative Forcing RCP45=
+	TABLE F Gases Radiative Forcing SSP2 RCP45(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of f gases radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 4.5).
+	|
+
+F Gases Radiative Forcing RCP60=
+	TABLE F Gases Radiative Forcing SSP2 RCP60(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CH4 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 6.0).
+	|
+
+F Gases Radiative Forcing RCP85=
+	TABLE F Gases Radiative Forcing SSP2 RCP85(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of f gases radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+Feedback Cooling=
+	Temperature Change from Preindustrial*Climate Feedback Parameter
+	~	W/(m*m)
+	~	Feedback cooling of atmosphere/upper ocean system due to blackbody \
+		radiation.
+	|
+
+Flux Atmosphere to Biomass=
+	Initial Net Primary Production*(1+Biostimulation Coefficient*LN(C in Atmosphere/Preindustrial C in Atmosphere\
+		))
+	~	TonC/Year
+	~	Carbon flux from atmosphere to biosphere (from primary production)
+	|
+
+Flux Atmosphere to Ocean=
+	((Equil C in Mixed Layer-C in Mixed Layer)/Mixing Time)
+	~	TonC/Year
+	~	Carbon flux from atmosphere to mixed ocean layer.
+	|
+
+Flux Biomass to Atmosphere=
+	(C in Biomass/Biomass Res Time)*(1-Humification Fraction)
+	~	TonC/Year
+	~	Carbon flux from biomass to atmosphere.
+	|
+
+Flux Biomass to Humus=
+	(C in Biomass/Biomass Res Time)*Humification Fraction
+	~	TonC/Year
+	~	Carbon flux from biomass to humus.
+	|
+
+Flux Humus to Atmosphere=
+	C in Humus/Humus Res Time
+	~	TonC/Year
+	~	Carbon flux from humus to atmosphere.
+	|
+
+GtC to TonC=
+	1e+09
+	~	TonC/GtC
+	~	1 GtC equals 1000000000 tons of carbon
+	|
+
+Heat Diffusion Covar=
+	1
+	~	Dmnl
+	~	Heat transfer coefficient parameter.
+	|
+
+Heat in Atmosphere and Upper Ocean= INTEG (
+	Effective Radiative Forcing-Feedback Cooling-Heat Transfer 1,
+		INIT Atmospheric and Upper Ocean Temperature*Atmospheric and Upper Ocean Heat Capacity\
+		)
+	~	Year*Watt/(Meter*Meter)
+	~	Temperature of the atmosphere and the mixed ocean layer.
+	|
+
+Heat in Deep Ocean 1= INTEG (
+	Heat Transfer 1-Heat Transfer 2,
+		INIT Deep Ocean 1 Temperature*Deep Ocean 1 Heat Capacity)
+	~	Year*Watt/(Meter*Meter)
+	~	Heat content of the first layer of the deep ocean.
+	|
+
+Heat in Deep Ocean 2= INTEG (
+	Heat Transfer 2-Heat Transfer 3,
+		INIT Deep Ocean 2 Temperature*Deep Ocean 2 Heat Capacity)
+	~	Year*Watt/(Meter*Meter)
+	~	Heat content of the second layer of the deep ocean.
+	|
+
+Heat in Deep Ocean 3= INTEG (
+	Heat Transfer 3-Heat Transfer 4,
+		INIT Deep Ocean 3 Temperature*Deep Ocean 3 Heat Capacity)
+	~	Year*Watt/(Meter*Meter)
+	~	Heat content of the third layer of the deep ocean.
+	|
+
+Heat in Deep Ocean 4= INTEG (
+	Heat Transfer 4,
+		INIT Deep Ocean 4 Temperature*Deep Ocean 4 Heat Capacity)
+	~	Year*Watt/(Meter*Meter)
+	~	Heat content of the fourth layer of the deep ocean.
+	|
+
+Heat to 2000m=
+	Heat to 700m+Heat in Deep Ocean 3
+	~	Year*W/(Meter*Meter)
+	~	Heat to 2000m in deep ocean. Assumes default layer thicknesses, i.e., 100 \
+		m for the mixed ocean, 300 m each for layers 1 and 2, and 1300 m for layer \
+		3.
+	|
+
+Heat to 2000m J=
+	Heat to 2000m*J per W Year*(Area*(1-Land Area Fraction))
+	~	Je22
+	~	Heat to 2000m in Joules*1e22 for the area covered by water.
+	|
+
+Heat to 700m=
+	Heat in Atmosphere and Upper Ocean*(1-Land Area Fraction)+Heat in Deep Ocean 1+Heat in Deep Ocean 2
+	~	Year*W/(Meter*Meter)
+	~	Sum of the heat in the atmosphere and upper ocean and that in the top two \
+		layers of the deep ocean. Assumes default layer thicknesses, i.e., 100 m \
+		for the mixed ocean and 300 m each for layers 1 and 2.
+	|
+
+Heat to 700m J=
+	Heat to 700m*J per W Year*(Area*(1-Land Area Fraction))+Offset 700m Heat
+	~	Je22
+	~	Heat to 700 m in Joules*1e22 for the area covered by water. Source of Historical \
+		Data:
+		NOAA – Ocean heat content anomalies; 
+		http://www.nodc.noaa.gov/OC5/3M_HEAT_CONTENT/
+		Levitus S., J. I. Antonov, T. P. Boyer, R. A. Locarnini, H. E. Garcia, and \
+		A. V. Mishonov, 2009. Global ocean heat content 1955-2008 in light of \
+		recently revealed instrumentation problems GRL, 36, L07608, \
+		doi:10.1029/2008GL037155.
+	|
+
+Heat Transfer 1=
+	(Temperature Change from Preindustrial-Relative Deep 1 Ocean Temperature)*Heat Transfer Coefficient 1\
+		/Mean Depth of Adjacent M 1 Layers
+	~	Watt/(Meter*Meter)
+	~	Heat transfer from the atmosphere & upper ocean to the first layer of the \
+		deep ocean.
+	|
+
+Heat Transfer 2=
+	(Relative Deep 1 Ocean Temperature-Relative Deep 2 Ocean Temperature)*Heat Transfer Coefficient 2\
+		/Mean Depth of Adjacent 1 2 Layers
+	~	W/(Meter*Meter)
+	~	Heat transfer from the first to the second layer of the deep ocean.
+	|
+
+Heat Transfer 3=
+	(Relative Deep 2 Ocean Temperature-Relative Deep 3 Ocean Temperature)*Heat Transfer Coefficient 3\
+		/Mean Depth of Adjacent 2 3 Layers
+	~	W/(Meter*Meter)
+	~	Heat transfer from the second to the third layer of the deep ocean.
+	|
+
+Heat Transfer 4=
+	(Relative Deep 3 Ocean Temperature-Relative Deep 4 Ocean Temperature)*Heat Transfer Coefficient 4\
+		/Mean Depth of Adjacent 3 4 Layers
+	~	W/(Meter*Meter)
+	~	Heat transfer from the third to the fourth layer of the deep ocean.
+	|
+
+Heat Transfer Coefficient 1=
+	((Heat Transfer Rate*Mean Depth of Adjacent M 1 Layers)*(Heat Diffusion Covar*(Eddy diff coeff M 1\
+		/Eddy diff coeff mean M 1)+(1-Heat Diffusion Covar)))
+	~	W/(Meter*DegreesC)
+	~	The ratio of the actual to the mean of the heat transfer coefficient, \
+		which controls the movement of heat through the climate sector.
+	|
+
+Heat Transfer Coefficient 2=
+	((Heat Transfer Rate*Mean Depth of Adjacent 1 2 Layers)*(Heat Diffusion Covar*(Eddy diff coeff 1 2\
+		/Eddy diff coeff mean 1 2)+(1-Heat Diffusion Covar)))
+	~	W/(Meter*DegreesC)
+	~	The ratio of the actual to the mean of the heat transfer coefficient, \
+		which controls the movement of heat through the climate sector.
+	|
+
+Heat Transfer Coefficient 3=
+	((Heat Transfer Rate*Mean Depth of Adjacent 2 3 Layers)*(Heat Diffusion Covar*(Eddy diff coeff 2 3\
+		/Eddy diff coeff mean 2 3)+(1-Heat Diffusion Covar)))
+	~	W/(Meter*DegreesC)
+	~	The ratio of the actual to the mean of the heat transfer coefficient, \
+		which controls the movement of heat through the climate sector.
+	|
+
+Heat Transfer Coefficient 4=
+	((Heat Transfer Rate*Mean Depth of Adjacent 3 4 Layers)*(Heat Diffusion Covar*(Eddy diff coeff 3 4\
+		/Eddy diff coeff mean 3 4)+(1-Heat Diffusion Covar)))
+	~	W/(Meter*DegreesC)
+	~	The ratio of the actual to the mean of the heat transfer coefficient, \
+		which controls the movement of heat through the climate sector.
+	|
+
+Heat Transfer Rate=
+	1.23
+	~	Watt/(Meter*Meter)/DegreesC
+	~	Rate of heat transfer between the surface and deep ocean.
+	|
+
+HFC Radiative Forcing=
+	IF THEN ELSE(Time<2005,HFC Radiative Forcing History,
+	IF THEN ELSE(RCP Scenario=1,HFC Radiative Forcing IMAGE RCP26,
+	IF THEN ELSE(RCP Scenario=2,HFC Radiative Forcing MiniCAM RCP45,
+	IF THEN ELSE(RCP Scenario=3, HFC Radiative Forcing AIM RCP60, 
+	IF THEN ELSE(RCP Scenario=4, HFC Radiative Forcing MESSAGE RCP85, 
+	HFC Radiative Forcing AIM RCP7
+	)))))
+	~	W/(Meter*Meter)
+	~	Radiative forcing from HFC in the atmosphere.
+	|
+
+HFC Radiative Forcing AIM RCP60=
+	TABLE HFC Radiative Forcing AIM RCP60(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of HFC radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by AIM (RCP 6.0).
+	|
+
+HFC Radiative Forcing AIM RCP7=
+	TABLE HFC Radiative Forcing AIM SSP3 RCP7(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CO2 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+HFC Radiative Forcing History=
+	TABLE HFC Radiative Forcing(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Historical data for radiative forcing from HFC in the atmosphere.
+	|
+
+HFC Radiative Forcing IMAGE RCP26=
+	TABLE HFC Radiative Forcing IMAGE RCP26(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of HFC radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by IMAGE (RCP \
+		2.6).
+	|
+
+HFC Radiative Forcing MESSAGE RCP85=
+	TABLE HFC Radiative Forcing MESSAGE RCP85(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of CO2 radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+HFC Radiative Forcing MiniCAM RCP45=
+	TABLE HFC Radiative Forcing MiniCAM RCP45(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of HFC radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MiniCAM (RCP \
+		4.5).
+	|
+
+Humification Fraction=
+	0.428
+	~	Dmnl
+	~	Fraction of carbon outflow from biomass that enters humus stock.
+	|
+
+Humus Res Time=
+	27.8
+	~	Year
+	~	Average carbon residence time in humus.
+	|
+
+INIT Atmospheric and Upper Ocean Temperature=
+	0
+	~	DegreesC
+	~	Initial value of Atmospheric and Upper Ocean Temperature.
+	|
+
+INIT C in Biomass= INITIAL(
+	Flux Atmosphere to Biomass*Biomass Res Time)
+	~	TonC
+	~	Initial carbon in biomass.
+	|
+
+INIT C in Deep Ocean 1=
+	Init C in Deep Ocean per meter*Layer Depth 1
+	~	TonC
+	~	Initial carbon in the first layer of deep ocean. was constant at \
+		3.115e+012 in the earlier versions of the model.
+	|
+
+INIT C in Deep Ocean 2=
+	Init C in Deep Ocean per meter*Layer Depth 2
+	~	TonC
+	~	Initial carbon in the second layer of deep ocean. was constant at \
+		3.099e+012 in earlier versions of the model
+	|
+
+INIT C in Deep Ocean 3=
+	Init C in Deep Ocean per meter*Layer Depth 3
+	~	TonC
+	~	Initial carbon in the third layer of deep ocean. was constant at \
+		1.3356e+013 in earlier versions of the model
+	|
+
+INIT C in Deep Ocean 4=
+	Init C in Deep Ocean per meter*Layer Depth 4
+	~	TonC
+	~	Initial carbon in the fourth layer of deep ocean. was constant at \
+		1.8477e+013 in earlier versions of the model.
+	|
+
+Init C in Deep Ocean per meter= INITIAL(
+	Equilibrium C per meter in Mixed Layer)
+	~	TonC/Meter
+	~		|
+
+INIT C in Humus= INITIAL(
+	Flux Biomass to Humus*Humus Res Time)
+	~	TonC
+	~	Inital carbon in humus.
+	|
+
+INIT C in Mixed Ocean=
+	9.018e+11
+	~	TonC
+	~	Initial carbon in mixed ocean layer.
+	|
+
+INIT CH4 in Atmosphere=
+	Atmospheric CH4 Concentration 1900 AR6/TonCH4 to ppb
+	~	TonCH4
+	~		|
+
+INIT Deep Ocean 1 Temperature=
+	0
+	~	DegreesC
+	~	Initial value of temperature in the first layer of deep ocean.
+	|
+
+INIT Deep Ocean 2 Temperature=
+	0
+	~	DegreesC
+	~	Initial value of temperature in the second layer of deep ocean.
+	|
+
+INIT Deep Ocean 3 Temperature=
+	0
+	~	DegreesC
+	~	Initial value of temperature in the third layer of deep ocean.
+	|
+
+INIT Deep Ocean 4 Temperature=
+	0
+	~	DegreesC
+	~	Initial value of temperature in the fourth layer of deep ocean.
+	|
+
+INIT N2O in Atmosphere=
+	Atmospheric N2O Concentration 1900 AR6/TonN2O to ppb
+	~	TonN2O
+	~		|
+
+Initial Net Primary Production=
+	8.51771e+10
+	~	TonC/Year
+	~	Initial net primary production.
+	|
+
+J per W Year=
+	365*24*60*60/1e+22
+	~	Je22/Watt/Year
+	~	Convertion from watts*year to Joules*1e22.
+	|
+
+Land Area Fraction=
+	0.292
+	~	Dmnl
+	~	Fraction of global surface area that is land.
+	|
+
+Land Thickness=
+	8.4
+	~	Meter
+	~	Effective land area heat capacity, expressed as equivalent water layer \
+		thickness.
+	|
+
+Layer Depth 1=
+	300
+	~	Meter
+	~	Depth of the first ocean layer.
+	|
+
+Layer Depth 2=
+	300
+	~	Meter
+	~	Depth of the second ocean layer.
+	|
+
+Layer Depth 3=
+	1300
+	~	Meter
+	~	Depth of the third ocean layer.
+	|
+
+Layer Depth 4=
+	1800
+	~	Meter
+	~	Depth of the fourth ocean layer.
+	|
+
+Layer Time Constant 1 2=
+	Layer Depth 2/(Eddy diff coeff 1 2/((Layer Depth 1+Layer Depth 2)/2))
+	~	Year
+	~	Time constant of exchange between the first and the second ocean layers.
+	|
+
+Layer Time Constant 2 3=
+	Layer Depth 3/(Eddy diff coeff 2 3/((Layer Depth 2+Layer Depth 3)/2))
+	~	Year
+	~	Time constant of exchange between the second and the third ocean layers.
+	|
+
+Layer Time Constant 3 4=
+	Layer Depth 4/(Eddy diff coeff 3 4/((Layer Depth 3+Layer Depth 4)/2))
+	~	Year
+	~	Time constant of exchange between the third and the fourth ocean layers.
+	|
+
+Layer Time Constant M 1=
+	Layer Depth 1/(Eddy diff coeff M 1/((Mixed Layer Depth+Layer Depth 1)/2))
+	~	Year
+	~	Time constant of exchange between mixed and the first ocean layers.
+	|
+
+Lower Layer Volume Vu 1=
+	Area*(1-Land Area Fraction)*Layer Depth 1
+	~	Meter*Meter*Meter
+	~	Water equivalent volume of the first layer of deep ocean.
+	|
+
+Lower Layer Volume Vu 2=
+	Area*(1-Land Area Fraction)*Layer Depth 2
+	~	Meter*Meter*Meter
+	~	Water equivalent volume of the second layer of deep ocean.
+	|
+
+Lower Layer Volume Vu 3=
+	Area*(1-Land Area Fraction)*Layer Depth 3
+	~	Meter*Meter*Meter
+	~	Water equivalent volume of the third layer of deep ocean.
+	|
+
+Lower Layer Volume Vu 4=
+	Area*(1-Land Area Fraction)*Layer Depth 4
+	~	Meter*Meter*Meter
+	~	Water equivalent volume of the fourth layer of deep ocean.
+	|
+
+Mass Heat Capacity=
+	4186
+	~	J/kg/DegreesC
+	~	Specific heat of water, i.e., amount of heat in Joules per kg water \
+		required to raise the temperature by one C degree.
+	|
+
+Mean Depth of Adjacent 1 2 Layers=
+	(Layer Depth 1+Layer Depth 2)/2
+	~	Meter
+	~	Mean depth of the first and the second ocean layers.
+	|
+
+Mean Depth of Adjacent 2 3 Layers=
+	(Layer Depth 2+Layer Depth 3)/2
+	~	Meter
+	~	Mean depth of the second and the third ocean layers.
+	|
+
+Mean Depth of Adjacent 3 4 Layers=
+	(Layer Depth 3+Layer Depth 4)/2
+	~	Meter
+	~	Mean depth of the third and the fourth ocean layers.
+	|
+
+Mean Depth of Adjacent M 1 Layers=
+	(Mixed Layer Depth+Layer Depth 1)/2
+	~	Meter
+	~	Mean depth of mixed and the first ocean layers.
+	|
+
+Mixed Layer Depth=
+	100
+	~	Meter
+	~	Mixed ocean layer depth.
+	|
+
+Mixing Time=
+	1
+	~	Year
+	~	Atmosphere - mixed ocean layer mixing time.
+	|
+
+Molar mass of CH4=
+	16.04
+	~	gCH4/mol
+	~		|
+
+Molar mass of C=
+	12.01
+	~	gC/mol
+	~		|
+
+Molar mass of N2O=
+	44.013
+	~	gN2O/mol
+	~		|
+
+N2O Concentration Ratio=
+	N2O in Atmosphere/INIT N2O in Atmosphere
+	~	Dmnl
+	~		|
+
+N2O in Atmosphere= INTEG (
+	Total N2O Emission-Total N2O Breakdown,
+		INIT N2O in Atmosphere)
+	~	TonN2O
+	~		|
+
+N2O Radiative Forcing=
+	IF THEN ELSE(Time<=2010,N2O Radiative Forcing History,
+	IF THEN ELSE(RCP Scenario=0, N2O Radiative Forcing RCP19,
+	IF THEN ELSE(RCP Scenario=1, N2O Radiative Forcing RCP26,
+	IF THEN ELSE(RCP Scenario=2, N2O Radiative Forcing RCP34,
+	IF THEN ELSE(RCP Scenario=3, N2O Radiative Forcing RCP45,
+	IF THEN ELSE(RCP Scenario=4, N2O Radiative Forcing RCP60,  
+	N2O Radiative Forcing RCP85))))))
+	~	W/(Meter*Meter)
+	~	Radiative forcing from N2O in the atmosphere.
+	|
+
+N2O Radiative Forcing Coefficient=
+	(a2 * SQRT(Atmospheric Concentration CO2*Dmnl Adjustment ppm)) 
+	+ (b2 * SQRT(Atmospheric Concentration N2O*Dmnl Adjustment ppb)) 
+	+ (c2 * SQRT(Atmospheric Concentration CH4*Dmnl Adjustment ppb)) 
+	+ d2
+	~	W/(m*m)
+	~		|
+
+N2O Radiative Forcing History=
+	TABLE N2O Radiative Forcing(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Historical data for radiative forcing from N2O in the atmosphere.
+	|
+
+N2O Radiative Forcing New=
+	N2O Radiative Forcing Coefficient
+	    * ( SQRT ( Atmospheric Concentration N2O * Dmnl Adjustment ppb ) 
+	      - SQRT ( Atmospheric N2O Concentration Preindustrial * Dmnl Adjustment ppb ) )
+	~	W/(m*m)
+	~		|
+
+N2O Radiative Forcing RCP19=
+	TABLE N2O Radiative Forcing SSP2 RCP19(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of N2O radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 1.9).
+	|
+
+N2O Radiative Forcing RCP26=
+	TABLE N2O Radiative Forcing SSP2 RCP26(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of N2O radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 2.6).
+	|
+
+N2O Radiative Forcing RCP34=
+	TABLE N2O Radiative Forcing SSP2 RCP34(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of N2O radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (SSP2 RCP 3.4).
+	|
+
+N2O Radiative Forcing RCP45=
+	TABLE N2O Radiative Forcing SSP2 RCP45(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of N2O radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 4.5).
+	|
+
+N2O Radiative Forcing RCP60=
+	TABLE N2O Radiative Forcing SSP2 RCP60(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of N2O radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by \
+		MESSAGE-GLOBIOM (RCP 6.0).
+	|
+
+N2O Radiative Forcing RCP85=
+	TABLE N2O Radiative Forcing SSP2 RCP85(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of N2O radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+Offset 700m Heat=
+	-16
+	~	Je22
+	~	Calibration offset.
+	|
+
+Other Anhtropogenic Radiative Forcing RCP60=
+	TABLE Other Anthropogenic Radiative Forcing SSP2 RCP60(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~		|
+
+Other Anthropogenic Radiative Forcing=
+	IF THEN ELSE(Time<=2010,Other Anthropogenic Radiative Forcing History,
+	IF THEN ELSE(RCP Scenario=0, Other Anthropogenic Radiative Forcing RCP19,
+	IF THEN ELSE(RCP Scenario=1,Other Anthropogenic Radiative Forcing RCP26,
+	IF THEN ELSE(RCP Scenario=2,Other Anthropogenic Radiative Forcing RCP34,
+	IF THEN ELSE(RCP Scenario=3, Other Anthropogenic Radiative Forcing RCP45, 
+	IF THEN ELSE(RCP Scenario=4, Other Anhtropogenic Radiative Forcing RCP60, 
+	Other Anthropogenic Radiative Forcing RCP85
+	))))))
+	~	W/(Meter*Meter)
+	~	Radiative forcing from other anthropogenic gases in the atmosphere. \
+		Calculated fro mthe SSP2 database as total forcing - (forcing from C02, \
+		CH4, N2O, F-Gases)
+	|
+
+Other Anthropogenic Radiative Forcing History=
+	TABLE Other Anthropogenic Radiative Forcing(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Historical data for radiative forcing from CH4 in the atmosphere.
+	|
+
+Other Anthropogenic Radiative Forcing RCP19=
+	TABLE Other Anthropogenic Radiative Forcing SSP2 RCP19(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	MESSAGE-GLOBIOM (RCP 1.9).
+	|
+
+Other Anthropogenic Radiative Forcing RCP26=
+	TABLE Other Anthropogenic Radiative Forcing SSP2 RCP26(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~		|
+
+Other Anthropogenic Radiative Forcing RCP34=
+	TABLE Other Anthropogenic Radiative Forcing SSP2 RCP34(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~		|
+
+Other Anthropogenic Radiative Forcing RCP45=
+	TABLE Other Anthropogenic Radiative Forcing SSP2 RCP45(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~		|
+
+Other Anthropogenic Radiative Forcing RCP85=
+	TABLE Other Anthropogenic Radiative Forcing SSP2 RCP85(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~		|
+
+Other Forcings=
+	F Gases Radiative Forcing+Other Anthropogenic Radiative Forcing
+	~	W/(Meter*Meter)
+	~	Radiative forcing from factors other than CO2 in the atmosphere.
+	|
+
+Other Radiative Forcing=
+	IF THEN ELSE(Time<2000,Other Radiative Forcing History,
+	IF THEN ELSE(RCP Scenario=1,Other Radiative Forcing IMAGE RCP26,
+	IF THEN ELSE(RCP Scenario=2,Other Radiative Forcing MiniCAM RCP45,
+	IF THEN ELSE(RCP Scenario=3, Other Radiative Forcing AIM RCP60,
+	IF THEN ELSE(RCP Scenario=4, Other Radiative Forcing MESSAGE RCP85,
+	Other Radiative Forcing AIM RCP7)))))
+	~	W/(Meter*Meter)
+	~	Radiative forcing from other factors than CO2, CH4, N2O and HFC in the \
+		atmosphere.
+	|
+
+Other Radiative Forcing AIM RCP60=
+	TABLE Other Radiative Forcing AIM RCP60(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of other radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by AIM (RCP 6.0).
+	|
+
+Other Radiative Forcing AIM RCP7=
+	TABLE Other Radiative Forcing AIM SSP3 RCP7(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of other radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+Other Radiative Forcing History=
+	TABLE Other Radiative Forcing(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Historical data for radiative forcing from other factors in the atmosphere.
+	|
+
+Other Radiative Forcing IMAGE RCP26=
+	TABLE Other Radiative Forcing IMAGE RCP26(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of other radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by IMAGE (RCP \
+		2.6).
+	|
+
+Other Radiative Forcing MESSAGE RCP85=
+	TABLE Other Radiative Forcing MESSAGE RCP85(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of other radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+Other Radiative Forcing MiniCAM RCP45=
+	TABLE Other Radiative Forcing MiniCAM RCP45(Time*Dimensionless Time)
+	~	W/(Meter*Meter)
+	~	Future projections of other radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MiniCAM (RCP \
+		4.5).
+	|
+
+Overlap Coefficient=
+	0.00047
+	~	W/(m*m)
+	~	Etminan et al. (2016)
+	|
+
+Overlap Exponent=
+	0.75
+	~	Dmnl
+	~	Etminan et al. (2016)
+	|
+
+ppb=
+	1e+09
+	~	ppb
+	~		|
+
+ppm to GtC=
+	2.13
+	~	GtC/ppm
+	~	1 ppm by volume of atmosphere CO2 equals 2.13 GtC
+	|
+
+Preindustrial C in Atmosphere=
+	5.9e+11
+	~	TonC
+	~	Preindustrial carbon content of atmosphere.
+	|
+
+Preindustrial C in Mixed Layer=
+	Preindustrial Ocean C per meter*Mixed Layer Depth
+	~	TonC
+	~	Initial carbon content of mixed ocean layer.
+	|
+
+Preindustrial Ocean C per meter=
+	9e+09
+	~	TonC/m
+	~	Preindustrial carbon content in ocean per meter.
+	|
+
+RCP Scenario=
+	3
+	~	Dmnl [1,4,1]
+	~	Trigger for Representative Concentration Pathways scenarios.
+		RCP Scenario=0, RCP1.9
+		RCP Scenario=1,RCP2.6,
+		RCP Scenario=2,RCP3.4,
+		RCP Scenario=3, RCP 4.5,
+		RCP Scenario=4, RCP 6,
+		RCP Scenario=5, RCP 8.5
+	|
+
+Ref Buffer Factor=
+	9.7
+	~	Dmnl
+	~	Normal buffer factor.
+	|
+
+Reference CO2 Removal Rate=
+	3.7e+07
+	~	TonC/Year/Year
+	~		|
+
+Relative Deep 1 Ocean Temperature=
+	Heat in Deep Ocean 1/Deep Ocean 1 Heat Capacity
+	~	DegreesC
+	~	Temperature of the first layer of the deep ocean.
+	|
+
+Relative Deep 2 Ocean Temperature=
+	Heat in Deep Ocean 2/Deep Ocean 2 Heat Capacity
+	~	DegreesC
+	~	Temperature of the second layer of the deep ocean.
+	|
+
+Relative Deep 3 Ocean Temperature=
+	Heat in Deep Ocean 3/Deep Ocean 3 Heat Capacity
+	~	DegreesC
+	~	Temperature of the third layer of the deep ocean.
+	|
+
+Relative Deep 4 Ocean Temperature=
+	Heat in Deep Ocean 4/Deep Ocean 4 Heat Capacity
+	~	DegreesC
+	~	Temperature of the fourth layer of the deep ocean.
+	|
+
+sec per Year=
+	3.1536e+07
+	~	sec/Year
+	~	Conversion from year to sec.
+	|
+
+Sensitivity of C flux to temp=
+	0.003
+	~	1/DegreesC
+	~		|
+
+TABLE CH4 Radiative Forcing(
+	[(1900,0)-(2005,0.5)],(1900,0.097),(1910,0.121),(1920,0.15),(1930,0.179),(1940,0.205\
+		),(1950,0.233),(1960,0.28),(1970,0.342),(1980,0.409),(1990,0.465),(2000,0.485),(2005\
+		,0.562305),(2010,0.588276))
+	~	W/(Meter*Meter)
+	~	Data series for historical data of CH4 radiative forcing. Pre-2000 From \
+		AR5, 2005 AND 2010 from the SSP database, SSP2 Message-GLOBIOM (marker).
+	|
+
+TABLE CH4 Radiative Forcing SSP2 RCP19(
+	[(2005,0)-(2100,1)],(2010,0.588276),(2020,0.61707),(2030,0.58715),(2040,0.509574),(2050\
+		,0.435621),(2060,0.380312),(2070,0.338259),(2080,0.301909),(2090,0.271782),(2100,0.249517\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of CH4 radiative forcing by \
+		Message-GLOBIOM (SSP2 marker model) in RCP 1.9.
+	|
+
+TABLE CH4 Radiative Forcing SSP2 RCP26(
+	[(2005,0)-(2100,1)],(2010,0.588276),(2020,0.617437),(2030,0.60655),(2040,0.559263),(\
+		2050,0.496306),(2060,0.449361),(2070,0.420164),(2080,0.395895),(2090,0.366439),(2100\
+		,0.33553))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of CH4 radiative forcing by \
+		Message-GLOBIOM (SSP2 marker model) in RCP 2.6.
+	|
+
+TABLE CH4 Radiative Forcing SSP2 RCP34(
+	[(0,0)-(10,10)],(2010,0.588276),(2020,0.618688),(2030,0.621345),(2040,0.592793),(2050\
+		,0.537515),(2060,0.488544),(2070,0.459203),(2080,0.441564),(2090,0.425481),(2100,0.405663\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of CH4 radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 3.4).
+	|
+
+TABLE CH4 Radiative Forcing SSP2 RCP45(
+	[(0,0)-(10,10)],(2010,0.588276),(2020,0.619873),(2030,0.627489),(2040,0.614632),(2050\
+		,0.578009),(2060,0.532435),(2070,0.499299),(2080,0.477175),(2090,0.46059),(2100,0.449891\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of CH4 radiative forcing by \
+		MESSAGE-GLOBIOM in SSP2 RCP 4.5.
+	|
+
+TABLE CH4 Radiative Forcing SSP2 RCP60(
+	[(0,0)-(10,10)],(2020,0.621315),(2030,0.636997),(2040,0.6457),(2050,0.637477),(2060,\
+		0.614447),(2070,0.590103),(2080,0.56345),(2090,0.535615),(2100,0.507884))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of CH4 radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 6.0).
+	|
+
+TABLE CH4 Radiative Forcing SSP2 RCP85(
+	[(0,0)-(10,10)],(2010,0.588276),(2020,0.624748),(2030,0.647046),(2040,0.664906),(2050\
+		,0.676129),(2060,0.685959),(2070,0.695531),(2080,0.699882),(2090,0.698119),(2100,0.688933\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of CH4 radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 8.5).
+	|
+
+TABLE F Gases Radiative Forcing(
+	[(0,0)-(10,10)],(1900,0),(1950,1e-05),(2005,0.021105),(2010,0.0311024))
+	~	W/(Meter*Meter)
+	~	Data series for historical data of F-gases radiative forcing. Pre-2000 \
+		From AR5, 2005 AND 2010 from the SSP database, SSP2 Message-GLOBIOM \
+		(marker).
+	|
+
+TABLE F Gases Radiative Forcing SSP2 RCP19(
+	[(0,0)-(10,10)],(2010,0.0311024),(2020,0.0613296),(2030,0.0770876),(2040,0.0756992),\
+		(2050,0.0766076),(2060,0.0793937),(2070,0.0825332),(2080,0.0849748),(2090,0.0865851\
+		),(2100,0.0877894))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of f-gases radiative forcing by \
+		Message-GLOBIOM (SSP2 marker model) in RCP 1.9.
+	|
+
+TABLE F Gases Radiative Forcing SSP2 RCP26(
+	[(0,0)-(10,10)],(2010,0.0311024),(2020,0.061264),(2030,0.0782927),(2040,0.080345),(2050\
+		,0.0847037),(2060,0.0891935),(2070,0.0927838),(2080,0.0960691),(2090,0.0987984),(2100\
+		,0.101286))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of f-gases radiative forcing by \
+		Message-GLOBIOM (SSP2 marker model) in RCP 2.6.
+	|
+
+TABLE F Gases Radiative Forcing SSP2 RCP34(
+	[(0,0)-(10,10)],(2010,0.0311024),(2020,0.0612598),(2030,0.0836687),(2040,0.0909787),\
+		(2050,0.0942257),(2060,0.0980601),(2070,0.103224),(2080,0.106661),(2090,0.108445),(\
+		2100,0.110579))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of f-gases radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 3.4).
+	|
+
+TABLE F Gases Radiative Forcing SSP2 RCP45(
+	[(0,0)-(10,10)],(2010,0.0311024),(2020,0.0612728),(2030,0.0871134),(2040,0.0987915),\
+		(2050,0.101803),(2060,0.103702),(2070,0.108015),(2080,0.112576),(2090,0.116856),(2100\
+		,0.119682))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of f-gases radiative forcing by \
+		MESSAGE-GLOBIOM in SSP2 RCP 4.5.
+	|
+
+TABLE F Gases Radiative Forcing SSP2 RCP60(
+	[(0,0)-(10,10)],(2010,0.0311024),(2020,0.061275),(2030,0.091407),(2040,0.119426),(2050\
+		,0.148527),(2060,0.173135),(2070,0.183224),(2080,0.17176),(2090,0.157098),(2100,0.151042\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of f gases radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 6.0).
+	|
+
+TABLE F Gases Radiative Forcing SSP2 RCP85(
+	[(0,0)-(10,10)],(2010,0.0311024),(2020,0.061417),(2030,0.0930176),(2040,0.122854),(2050\
+		,0.156046),(2060,0.192871),(2070,0.23523),(2080,0.283043),(2090,0.334059),(2100,0.386994\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of f-gases radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 8.5).
+	|
+
+TABLE HFC Radiative Forcing(
+	[(1900,0)-(2005,1)],(1900,0.001),(1910,0.001),(1920,0.001),(1930,0.002),(1940,0.003)\
+		,(1950,0.008),(1960,0.022),(1970,0.069),(1980,0.174),(1990,0.288),(2000,0.332),(2005\
+		,0.34))
+	~	W/(Meter*Meter)
+	~	Data series for historical data of HFC radiative forcing.
+	|
+
+TABLE HFC Radiative Forcing AIM RCP60(
+	[(2000,0)-(2100,1)],(2005,0.34),(2010,0.344),(2020,0.346),(2030,0.339),(2040,0.316),\
+		(2050,0.272),(2060,0.236),(2070,0.211),(2080,0.194),(2090,0.18),(2100,0.168))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of HFC radiative forcing by AIM (RCP \
+		6.0).
+	|
+
+TABLE HFC Radiative Forcing AIM SSP3 RCP7(
+	[(2000,0)-(2100,0.3)],(2005,0.021),(2010,0.031),(2020,0.061),(2030,0.096),(2040,0.129\
+		),(2050,0.16),(2060,0.188),(2070,0.211),(2080,0.231),(2090,0.251),(2100,0.27))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of HFC radiative forcing by AIM (RCP 7).
+	|
+
+TABLE HFC Radiative Forcing IMAGE RCP26(
+	[(2000,0)-(2100,1)],(2005,0.34),(2010,0.344),(2020,0.346),(2030,0.329),(2040,0.301),\
+		(2050,0.273),(2060,0.253),(2070,0.243),(2080,0.236),(2090,0.229),(2100,0.22))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of HFC radiative forcing by IMAGE (RCP \
+		2.6).
+	|
+
+TABLE HFC Radiative Forcing MESSAGE RCP85(
+	[(2000,0)-(2100,1)],(2005,0.34),(2010,0.345),(2020,0.36),(2030,0.371),(2040,0.366),(\
+		2050,0.339),(2060,0.316),(2070,0.303),(2080,0.297),(2090,0.294),(2100,0.294))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of HFC radiative forcing by MESSAGE \
+		(RCP 8.5).
+	|
+
+TABLE HFC Radiative Forcing MiniCAM RCP45(
+	[(2000,0)-(2100,1)],(2005,0.34),(2010,0.344),(2020,0.348),(2030,0.344),(2040,0.323),\
+		(2050,0.279),(2060,0.242),(2070,0.215),(2080,0.197),(2090,0.188),(2100,0.183))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of HFC radiative forcing by MiniCAM \
+		(RCP 4.5).
+	|
+
+TABLE N2O Radiative Forcing(
+	[(1900,0)-(2005,1)],(1900,0.025),(1910,0.029),(1920,0.036),(1930,0.043),(1940,0.048)\
+		,(1950,0.056),(1960,0.064),(1970,0.077),(1980,0.098),(1990,0.124),(2000,0.145),(2005\
+		,0.155711),(2010,0.167804))
+	~	W/(Meter*Meter)
+	~	Data series for historical data of N2O radiative forcing.
+	|
+
+TABLE N2O Radiative Forcing SSP2 RCP19(
+	[(0,0)-(10,10)],(2010,0.167804),(2020,0.190979),(2030,0.212475),(2040,0.22977),(2050\
+		,0.240821),(2060,0.246385),(2070,0.248219),(2080,0.247229),(2090,0.244504),(2100,0.240289\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of N2O radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 1.9).
+	|
+
+TABLE N2O Radiative Forcing SSP2 RCP26(
+	[(0,0)-(10,10)],(2010,0.167804),(2020,0.190994),(2030,0.213422),(2040,0.233756),(2050\
+		,0.249976),(2060,0.262045),(2070,0.270751),(2080,0.275577),(2090,0.277001),(2100,0.27603\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of N2O radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 2.6).
+	|
+
+TABLE N2O Radiative Forcing SSP2 RCP34(
+	[(0,0)-(10,10)],(2010,0.167804),(2020,0.191089),(2030,0.214084),(2040,0.235924),(2050\
+		,0.254871),(2060,0.270427),(2070,0.282841),(2080,0.291311),(2090,0.29594),(2100,0.298074\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of N2O radiative forcing by \
+		MESSAGE-GLOBIOM (SSP 2 RCP 34).
+	|
+
+TABLE N2O Radiative Forcing SSP2 RCP45(
+	[(0,0)-(10,10)],(2010,0.167804),(2020,0.191135),(2030,0.21432),(2040,0.236786),(2050\
+		,0.257099),(2060,0.274837),(2070,0.289969),(2080,0.301271),(2090,0.308584),(2100,0.312947\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of N2O radiative forcing by \
+		MESSAGE-GLOBIOM (SSP2 RCP 4.5).
+	|
+
+TABLE N2O Radiative Forcing SSP2 RCP60(
+	[(0,0)-(10,10)],(2010,0.167804),(2020,0.191189),(2030,0.214542),(2040,0.237486),(2050\
+		,0.258855),(2060,0.278363),(2070,0.296147),(2080,0.311316),(2090,0.324115),(2100,0.335382\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of N2O radiative forcing by \
+		MESSAGE-GLOBIOM (SSP2 RCP 6.0).
+	|
+
+TABLE N2O Radiative Forcing SSP2 RCP85(
+	[(0,0)-(10,10)],(2010,0.167804),(2020,0.191292),(2030,0.215286),(2040,0.239765),(2050\
+		,0.263741),(2060,0.286982),(2070,0.30948),(2080,0.331141),(2090,0.352599),(2100,0.374267\
+		))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of N2O radiative forcing by \
+		MESSAGE-GLOBIOM (SSP2 RCP 8.5).
+	|
+
+TABLE Other Anthropogenic Radiative Forcing(
+	[(0,0)-(10,10)],(1900,0),(2005,-0.557989))
+	~	W/(Meter*Meter)
+	~	Data series for historical data of other radiative forcing. 2005 AND 2010 from the \
+		SSP database, SSP2 Message-GLOBIOM (marker).
+		Calculated as (total forcing) - (CO2, CH4, N2O and F-Gases forcings)
+	|
+
+TABLE Other Anthropogenic Radiative Forcing SSP2 RCP19(
+	[(0,0)-(10,10)],(2005,-0.557989),(2010,-0.487374),(2020,-0.397824),(2030,-0.230515),\
+		(2040,-0.210926),(2050,-0.27021),(2060,-0.319045),(2070,-0.350269),(2080,-0.372422)\
+		,(2090,-0.388618),(2100,-0.39696))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other radiative forcing by \
+		Message-GLOBIOM (SSP2 marker model) in RCP 1.9.
+	|
+
+TABLE Other Anthropogenic Radiative Forcing SSP2 RCP26(
+	[(0,0)-(10,10)],(2005,-0.557989),(2010,-0.487232),(2020,-0.399799),(2030,-0.306337),\
+		(2040,-0.244383),(2050,-0.274545),(2060,-0.331504),(2070,-0.375821),(2080,-0.401136\
+		),(2090,-0.411268),(2100,-0.411342))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other radiative forcing by \
+		Message-GLOBIOM (SSP2 marker model) in RCP 2.6.
+	|
+
+TABLE Other Anthropogenic Radiative Forcing SSP2 RCP34(
+	[(0,0)-(10,10)],(2005,-0.557989),(2010,-0.487367),(2020,-0.405055),(2030,-0.362333),\
+		(2040,-0.311911),(2050,-0.331126),(2060,-0.356647),(2070,-0.378118),(2080,-0.400985\
+		),(2090,-0.420509),(2100,-0.426015))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 3.4).
+	|
+
+TABLE Other Anthropogenic Radiative Forcing SSP2 RCP45(
+	[(0,0)-(10,10)],(2005,-0.557989),(2010,-0.487489),(2020,-0.40917),(2030,-0.40208),(2040\
+		,-0.36824),(2050,-0.38091),(2060,-0.404117),(2070,-0.425465),(2080,-0.437686),(2090\
+		,-0.43453),(2100,-0.434378))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other radiative forcing by \
+		MESSAGE-GLOBIOM in SSP2 RCP 4.5.
+	|
+
+TABLE Other Anthropogenic Radiative Forcing SSP2 RCP60(
+	[(0,0)-(10,10)],(2005,-0.557989),(2010,-0.487543),(2020,-0.411289),(2030,-0.431191),\
+		(2040,-0.416421),(2050,-0.435845),(2060,-0.461476),(2070,-0.470064),(2080,-0.486857\
+		),(2090,-0.499783),(2100,-0.500466))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 6.0).
+	|
+
+TABLE Other Anthropogenic Radiative Forcing SSP2 RCP85(
+	[(0,0)-(10,10)],(2005,-0.557989),(2010,-0.48777),(2020,-0.415208),(2030,-0.439654),(\
+		2040,-0.432948),(2050,-0.454012),(2060,-0.477328),(2070,-0.486185),(2080,-0.499955)\
+		,(2090,-0.503879),(2100,-0.497409))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other radiative forcing by \
+		MESSAGE-GLOBIOM (RCP 8.5).
+	|
+
+TABLE Other Radiative Forcing(
+	[(1900,-1)-(2005,1)],(1900,-0.234),(1910,-0.282),(1920,-0.287),(1930,-0.301),(1940,-\
+		0.301),(1950,-0.369),(1960,-0.461),(1970,-0.523),(1980,-0.618),(1990,-0.681),(2000,\
+		-0.781),(2005,-0.766))
+	~	W/(Meter*Meter)
+	~	Data series for historical data of other factors radiative forcing.
+	|
+
+TABLE Other Radiative Forcing AIM RCP60(
+	[(2000,-1)-(2100,1)],(2000,-0.781),(2010,-0.751),(2020,-0.671),(2030,-0.573),(2040,-\
+		0.575),(2050,-0.521),(2060,-0.509),(2070,-0.386),(2080,-0.32),(2090,-0.322),(2100,-\
+		0.328))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other factors radiative forcing by \
+		AIM (RCP 6.0).
+	|
+
+TABLE Other Radiative Forcing AIM SSP3 RCP7(
+	[(2000,-1.5)-(2100,1)],(2005,-1.115),(2010,-1.06),(2020,-1.088),(2030,-1.09),(2040,-\
+		1.079),(2050,-1.081),(2060,-1.069),(2070,-1.057),(2080,-1.043),(2090,-1.017),(2100,\
+		-0.983))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other factors radiative forcing by \
+		AIM (RCP 7).
+	|
+
+TABLE Other Radiative Forcing IMAGE RCP26(
+	[(2000,-1)-(2100,1)],(2000,-0.781),(2010,-0.717),(2020,-0.577),(2030,-0.489),(2040,-\
+		0.427),(2050,-0.413),(2060,-0.432),(2070,-0.418),(2080,-0.382),(2090,-0.353),(2100,\
+		-0.323))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other factors radiative forcing by \
+		IMAGE (RCP 2.6).
+	|
+
+TABLE Other Radiative Forcing MESSAGE RCP85(
+	[(2000,-1)-(2100,1)],(2000,-0.781),(2010,-0.696),(2020,-0.648),(2030,-0.573),(2040,-\
+		0.452),(2050,-0.341),(2060,-0.274),(2070,-0.226),(2080,-0.189),(2090,-0.121),(2100,\
+		-0.088))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other factors radiative forcing by \
+		MESSAGE (RCP 8.5).
+	|
+
+TABLE Other Radiative Forcing MiniCAM RCP45(
+	[(2000,-1)-(2100,1)],(2000,-0.781),(2010,-0.713),(2020,-0.605),(2030,-0.518),(2040,-\
+		0.431),(2050,-0.344),(2060,-0.296),(2070,-0.257),(2080,-0.226),(2090,-0.227),(2100,\
+		-0.224))
+	~	W/(Meter*Meter)
+	~	Data series for future projections of other factors radiative forcing by \
+		MiniCAM (RCP 4.5).
+	|
+
+Temperature Anomalies GISS v Preindustrial=
+	Temperature Change from Preindustrial
+	~	DegreesC
+	~	Historical values of temperature anomalies of the Atmosphere and Upper \
+		Ocean as by GISS. Source: NASA Goddard Institute for Space Studies, \
+		http://data.giss.nasa.gov/gistemp/graphs_v3/
+	|
+
+Temperature Anomalies HadCRUT4 v Preindustrial=
+	Temperature Change from Preindustrial
+	~	DegreesC
+	~	Historical values of temperature anomalies of the Atmosphere and Upper \
+		Ocean as by HadCRUT4. Source: Met Office Hadley Centre \
+		http://www.metoffice.gov.uk/hadobs/hadcrut4/data/versions/HadCRUT.4.1.1.0_r\
+		elease_notes.html
+	|
+
+Temperature Change from Preindustrial=
+	Heat in Atmosphere and Upper Ocean/Atmospheric and Upper Ocean Heat Capacity
+	~	DegreesC
+	~	Temperature of the Atmosphere and Upper Ocean and how it has changed from \
+		preindustrial period.
+	|
+
+Terrestrial carbon sink=
+	Flux Atmosphere to Biomass-Flux Biomass to Atmosphere
+	~	TonC/Year
+	~		|
+
+Ton to G CH4=
+	1e+06
+	~	gCH4/TonCH4
+	~		|
+
+Ton to g N2O=
+	1e+06
+	~	gN2O/TonN2O
+	~		|
+
+TonCH4 to ppb=
+	ppb * Ton to G CH4 / Molar mass of CH4 / Total moles of air in atmosphere
+	~	ppb/TonCH4
+	~		|
+
+TonN2O to ppb=
+	ppb * Ton to g N2O / Molar mass of N2O / Total moles of air in atmosphere
+	~	ppb/TonN2O
+	~		|
+
+Total C Emission=
+	Total CO2 Emissions * 1e+06 / CO2 to C
+	~	TonC/Year
+	~	Emissions of carbon from energy use and other sources.
+	|
+
+Total CH4 Emissions= WITH LOOKUP (
+	Time,
+		([(0,0)-(10,10)],(1900,87.6133),(1901,88.3912),(1902,89.2628),(1903,89.8907),(1904,\
+		91.3568),(1905,92.4013),(1906,93.25),(1907,94.5608),(1908,95.7124),(1909,96.4667),(\
+		1910,97.7719),(1911,98.4294),(1912,99.2661),(1913,100.613),(1914,102.284),(1915,103.058\
+		),(1916,104.089),(1917,105.44),(1918,106.746),(1919,108.095),(1920,109.134),(1921,109.809\
+		),(1922,110.486),(1923,112.254),(1924,112.634),(1925,113.67),(1926,114.546),(1927,115.747\
+		),(1928,116.796),(1929,118.02),(1930,119.67),(1931,119.908),(1932,121.422),(1933,122.344\
+		),(1934,123.953),(1935,124.895),(1936,126.465),(1937,127.182),(1938,127.905),(1939,\
+		129.501),(1940,130.135),(1941,132.218),(1942,134.706),(1943,136.63),(1944,138.931),\
+		(1945,141.023),(1946,142.706),(1947,144.794),(1948,147.272),(1949,150.216),(1950,152.201\
+		),(1951,155.272),(1952,160.573),(1953,165.682),(1954,170.371),(1955,174.74),(1956,180.671\
+		),(1957,186.056),(1958,188.386),(1959,192.687),(1960,197.261),(1961,205.138),(1962,\
+		207.212),(1963,216.192),(1964,216.556),(1965,222.666),(1966,226.311),(1967,232.333)\
+		,(1968,235.335),(1969,239.185),(1970,244.418),(1971,249.29),(1972,257.21),(1973,260.295\
+		),(1974,261.808),(1975,263.059),(1976,269.948),(1977,274.03),(1978,276.333),(1979,281.6\
+		),(1980,283.346),(1981,279.789),(1982,287.669),(1983,281.618),(1984,285.003),(1985,\
+		285.675),(1986,290.808),(1987,295.049),(1988,298.685),(1989,302.164),(1990,305.273)\
+		,(1991,318.731),(1992,299.402),(1993,299.443),(1994,310.252),(1995,305.41),(1996,307.291\
+		),(1997,331.289),(1998,315.333),(1999,309.408),(2000,310.187),(2001,312.896),(2002,\
+		322.279),(2003,328.124),(2004,338.942),(2005,346.396),(2006,356.47),(2007,355.023),\
+		(2008,360.492),(2009,364.2),(2010,370.896),(2011,372.658),(2012,380.81),(2013,381.594\
+		),(2014,387.874),(2100,387.874) ))
+	~	MTonCH4/Year
+	~	in MT CH4
+	|
+
+Total N2O Emissions= WITH LOOKUP (
+	Time,
+		([(0,0)-(10,10)],(1900,1356.16),(1901,1369.1),(1902,1384.52),(1903,1399.36),(1904,1415.6\
+		),(1905,1432.56),(1906,1449.95),(1907,1466.75),(1908,1483.12),(1909,1499.1),(1910,1515.94\
+		),(1911,1533.71),(1912,1559.23),(1913,1589.12),(1914,1621.62),(1915,1656.96),(1916,\
+		1693.36),(1917,1728.66),(1918,1761.61),(1919,1791.47),(1920,1818.81),(1921,1843.61)\
+		,(1922,1867.74),(1923,1893.42),(1924,1920.28),(1925,1944.75),(1926,1968.03),(1927,1990.27\
+		),(1928,2010.73),(1929,2028.07),(1930,2043.07),(1931,2053.98),(1932,2064.65),(1933,\
+		2073.56),(1934,2083.43),(1935,2093.47),(1936,2103.27),(1937,2115.58),(1938,2129.1),\
+		(1939,2147.48),(1940,2167.53),(1941,2242.12),(1942,2403.56),(1943,2636.05),(1944,2912.5\
+		),(1945,3215.87),(1946,3522.87),(1947,3815.76),(1948,4068.7),(1949,4264.1),(1950,4378.5\
+		),(1951,4447.58),(1952,4514.63),(1953,4585.34),(1954,4658.92),(1955,4738.57),(1956,\
+		4819.78),(1957,4906.31),(1958,5002.82),(1959,5106.72),(1960,5222.37),(1961,5570.29)\
+		,(1962,5779.89),(1963,5976.28),(1964,6199.34),(1965,6465.56),(1966,6773.51),(1967,7041.51\
+		),(1968,7256.01),(1969,7435.62),(1970,7406.67),(1971,7327.06),(1972,7746.9),(1973,7935.57\
+		),(1974,7909.79),(1975,8180.65),(1976,8409.33),(1977,8640.44),(1978,8837.87),(1979,\
+		9123.76),(1980,9227.26),(1981,9121.12),(1982,9494.52),(1983,9530.29),(1984,9421.16)\
+		,(1985,9421.44),(1986,9620.41),(1987,9977.12),(1988,9722.72),(1989,9842.47),(1990,9862.3\
+		),(1991,9968.82),(1992,9990.08),(1993,9915.09),(1994,10121),(1995,10218.8),(1996,10278.8\
+		),(1997,10590.2),(1998,10128.4),(1999,9868.59),(2000,9603.19),(2001,9722.25),(2002,\
+		9991.77),(2003,10099.8),(2004,10354.6),(2005,10516.6),(2006,10802.6),(2007,10363.5)\
+		,(2008,10429.7),(2009,10546.7),(2010,10539.8),(2011,10446.4),(2012,10593.9),(2013,10759\
+		),(2014,10866.3),(2015,10900),(2020,11774.9),(2030,13291.8),(2040,14526.6),(2050,15634.9\
+		),(2060,16638),(2070,17624.3),(2080,18581.1),(2090,19626.8),(2100,20654.1) ))
+	~	KTonN2O/Year
+	~	([(0,0)-(10,10)],(1900,1356.16),(1901,1369.1),(1902,1384.52),(1903,1399.36)\
+		,(1904,1415.6),(1905,1432.56),(1906,1449.95),(1907,1466.75),(1908,1483.12),\
+		(1909,1499.1),(1910,1515.94),(1911,1533.71),(1912,1559.23),(1913,1589.12),(\
+		1914,1621.62),(1915,1656.96),(1916,1693.36),(1917,1728.66),(1918,1761.61),(\
+		1919,1791.47),(1920,1818.81),(1921,1843.61),(1922,1867.74),(1923,1893.42),(\
+		1924,1920.28),(1925,1944.75),(1926,1968.03),(1927,1990.27),(1928,2010.73),(\
+		1929,2028.07),(1930,2043.07),(1931,2053.98),(1932,2064.65),(1933,2073.56),(\
+		1934,2083.43),(1935,2093.47),(1936,2103.27),(1937,2115.58),(1938,2129.1),(1\
+		939,2147.48),(1940,2167.53),(1941,2242.12),(1942,2403.56),(1943,2636.05),(1\
+		944,2912.5),(1945,3215.87),(1946,3522.87),(1947,3815.76),(1948,4068.7),(194\
+		9,4264.1),(1950,4378.5),(1951,4447.58),(1952,4514.63),(1953,4585.34),(1954,\
+		4658.92),(1955,4738.57),(1956,4819.78),(1957,4906.31),(1958,5002.82),(1959,\
+		5106.72),(1960,5222.37),(1961,5570.29),(1962,5779.89),(1963,5976.28),(1964,\
+		6199.34),(1965,6465.56),(1966,6773.51),(1967,7041.51),(1968,7256.01),(1969,\
+		7435.62),(1970,7406.67),(1971,7327.06),(1972,7746.9),(1973,7935.57),(1974,7\
+		909.79),(1975,8180.65),(1976,8409.33),(1977,8640.44),(1978,8837.87),(1979,9\
+		123.76),(1980,9227.26),(1981,9121.12),(1982,9494.52),(1983,9530.29),(1984,9\
+		421.16),(1985,9421.44),(1986,9620.41),(1987,9977.12),(1988,9722.72),(1989,9\
+		842.47),(1990,9862.3),(1991,9968.82),(1992,9990.08),(1993,9915.09),(1994,10\
+		121),(1995,10218.8),(1996,10278.8),(1997,10590.2),(1998,10128.4),(1999,9868\
+		.59),(2000,9603.19),(2001,9722.25),(2002,9991.77),(2003,10099.8),(2004,1035\
+		4.6),(2005,10516.6),(2006,10802.6),(2007,10363.5),(2008,10429.7),(2009,1054\
+		6.7),(2010,10539.8),(2011,10446.4),(2012,10593.9),(2013,10759),(2014,10866.\
+		3),(2100,10866.3) )
+	|
+
+Total moles of air in atmosphere=
+	1.77e+20
+	~	mol
+	~		|
+
+Total Radiative Forcing=
+	CH4 Radiative Forcing New+CO2 Radiative Forcing New+N2O Radiative Forcing New+Other Forcings
+	~	W/(m*m)
+	~	Radiative forcing from various factors in the atmosphere. Source of Historical Data:
+		IIASA RCP Database
+		https://tntcat.iiasa.ac.at:8743/RcpDb/dsd?Action=htmlpage&page=welcome
+	|
+
+Total Radiative Forcing AIM RCP60=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of total radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by AIM (RCP 6.0).
+	|
+
+Total Radiative Forcing IMAGE RCP26=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of total radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by IMAGE (RCP \
+		2.6).
+	|
+
+Total Radiative Forcing MESSAGE RCP85=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of total radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MESSAGE (RCP \
+		8.5).
+	|
+
+Total Radiative Forcing MiniCAM RCP45=
+	0
+	~	W/(Meter*Meter)
+	~	Future projections of total radiative forcing from Representative \
+		Concentration Pathways prepared for the Fifth Assessment Report of the \
+		United Nations Intergovernmental Panel on Climate Change by MiniCAM (RCP \
+		4.5).
+	|
+
+Upper Layer Volume Vu=
+	Area*(Land Area Fraction*Land Thickness+(1-Land Area Fraction)*Mixed Layer Depth)
+	~	Meter*Meter*Meter
+	~	Water equivalent volume of the upper box, which is a weighted combination \
+		of land, atmosphere,and upper ocean volumes.
+	|
+
+Volumetric Heat Capacity=
+	Mass Heat Capacity*Watt per J s/sec per Year*Density
+	~	Year*W/(Meter*Meter*Meter*DegreesC)
+	~	Volumetric heat capacity of water, i.e., amount of heat in watt*year \
+		required to raise 1 cubic meter of water by one degree C.
+	|
+
+Watt per J s=
+	1
+	~	W/(J/sec)
+	~	Conversion from J/s to watts.
+	|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 2100
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 1900
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 1
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.125
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Carbon Cycle
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,90,0
+10,1,C in Atmosphere,-536,-19,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,2,Preindustrial C in Atmosphere,-3,94,63,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,3,48,-751,3,10,8,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,4,6,1,4,0,0,22,0,0,0,-1--1--1,,1|(-625,3)|
+1,5,6,3,100,0,0,22,0,0,0,-1--1--1,,1|(-708,3)|
+11,6,0,-669,3,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Total C Emission,-669,29,35,18,40,131,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,8,C in Biomass,-205,-150,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,9,C in Humus,-536,-263,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,10,C in Mixed Layer,-536,289,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,11,C in Deep Ocean 1,-536,495,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,12,14,8,4,0,0,22,0,0,0,-1--1--1,,1|(-205,-19)|
+1,13,14,1,100,0,0,22,0,0,0,-1--1--1,,1|(-405,-19)|
+11,14,0,-321,-19,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,15,Flux Atmosphere to Biomass,-321,5,62,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,16,18,1,4,0,0,22,0,0,0,-1--1--1,,1|(-536,-151)|
+1,17,18,8,100,0,0,22,0,0,0,-1--1--1,,1|(-317,-151)|
+11,18,0,-383,-151,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,19,Flux Biomass to Atmosphere,-383,-127,59,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,20,22,9,4,0,0,22,0,0,0,-1--1--1,,1|(-401,-278)|
+1,21,22,8,100,0,0,22,0,0,0,-1--1--1,,1|(-205,-278)|
+11,22,0,-312,-278,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,23,Flux Biomass to Humus,-312,-254,59,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,24,26,1,4,0,0,22,0,0,0,-1--1--1,,1|(-572,-96)|
+1,25,26,9,100,0,0,22,0,0,0,-1--1--1,,1|(-572,-194)|
+11,26,0,-572,-148,8,6,33,3,0,0,2,0,0,0,0,0,0,0,0,0
+10,27,Flux Humus to Atmosphere,-628,-148,52,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,28,30,10,4,0,0,22,0,0,0,-1--1--1,,1|(-536,203)|
+1,29,30,1,68,0,0,22,2,0,0,-1--1--1,|||0-0-0,1|(-536,73)|
+11,30,0,-536,141,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,31,Flux Atmosphere to Ocean,-471,141,62,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,32,34,11,4,0,0,22,0,0,0,-1--1--1,,1|(-536,427)|
+1,33,34,10,100,0,0,22,0,0,0,-1--1--1,,1|(-536,348)|
+11,34,0,-536,384,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,35,Diffusion Flux 1,-477,384,55,10,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,36,INIT C in Deep Ocean 1,39,604,54,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,37,INIT C in Mixed Ocean,-651,289,55,18,8,3,0,44,0,0,0,0,-1--1--1,192-255-192,Arial|10||0-0-0,0,0,0,0,0,0
+10,38,INIT C in Biomass,67,-138,33,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,39,INIT C in Humus,-372,-323,57,10,8,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,40,Humification Fraction,-317,-194,46,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,41,Biomass Res Time,-419,-209,50,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,42,Humus Res Time,-509,-201,43,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,43,Initial Net Primary Production,-3,4,64,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,44,Biostimulation Coefficient,-3,47,52,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,45,Buffer Factor,-279,192,47,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,46,Buff C Coeff,-279,238,45,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,47,Ref Buffer Factor,-151,235,37,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,48,Equil C in Mixed Layer,-279,140,45,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,49,Preindustrial C in Mixed Layer,-3,192,63,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,50,Mixing Time,-419,206,44,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,51,Mixed Layer Depth,-151,289,45,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,52,8,23,1,0,0,0,0,64,0,-1--1--1,,1|(-240,-216)|
+1,53,40,23,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,54,41,23,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,55,41,18,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,56,40,18,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,57,8,19,1,0,0,0,0,64,0,-1--1--1,,1|(-310,-102)|
+1,58,42,27,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,59,9,27,1,0,0,0,0,64,0,-1--1--1,,1|(-608,-206)|
+1,60,38,8,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,61,39,9,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,62,37,10,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,63,49,48,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,64,2,48,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,65,46,45,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,66,47,45,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,67,Eddy diff coeff M 1,-701,384,53,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,68,INIT C in Atmosphere,-830,112,45,18,8,3,0,44,0,0,0,0,-1--1--1,192-255-192,Arial|10||0-0-0,0,0,0,0,0,0
+1,69,68,1,1,0,0,0,0,64,1,-1--1--1,,1|(-666,67)|
+10,70,C Concentration Ratio,-683,112,60,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,71,68,70,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,72,1,70,1,0,0,0,0,64,0,-1--1--1,,1|(-597,79)|
+10,73,Atmospheric CO2 Law Dome 1850,-999,114,66,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,74,ppm to GtC,-830,182,42,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,75,GtC to TonC,-966,210,46,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,76,74,68,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,77,75,68,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,78,23,39,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,79,42,39,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,80,15,38,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,81,41,38,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,82,C in Deep Ocean 2,-536,689,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,83,C in Deep Ocean 3,-536,873,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,84,C in Deep Ocean 4,-536,1084,52,30,3,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,85,INIT C in Deep Ocean 2,39,782,54,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,86,INIT C in Deep Ocean 3,39,911,54,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,87,INIT C in Deep Ocean 4,39,1052,54,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,88,Layer Depth 1,-151,495,51,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,89,Layer Depth 2,-151,689,51,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,90,Layer Depth 3,-151,873,51,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,91,Layer Depth 4,-151,1084,51,10,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,92,Preindustrial Ocean C per meter,-3,289,70,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,93,51,49,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,94,92,49,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,95,2,15,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,96,45,48,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,97,10,45,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,98,49,45,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,99,44,15,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,100,43,15,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,101,C in Mixed Layer per meter,-352,289,62,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,102,C in Deep Ocean 1 per meter,-352,495,64,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,103,10,101,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,104,51,101,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,105,11,102,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,106,88,102,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,107,67,34,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,108,Mean Depth of Adjacent M 1 Layers,-267,384,75,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,109,51,108,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,110,88,108,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,111,108,35,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,112,102,35,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,113,101,35,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,114,Eddy diff coeff index M 1,-780,320,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,115,Eddy diff coeff mean M 1,-780,452,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,116,Layer Time Constant M 1,-1019,384,49,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,117,Mixed Layer Depth,-948,289,50,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+10,118,Layer Depth 1,-948,495,50,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,119,67,116,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,120,117,116,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,121,118,116,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,122,114,67,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,123,115,67,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,124,126,82,4,0,0,22,0,0,0,-1--1--1,,1|(-536,631)|
+1,125,126,11,100,0,0,22,0,0,0,-1--1--1,,1|(-536,558)|
+11,126,0,-536,597,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,127,Diffusion Flux 2,-477,597,55,10,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,128,130,83,4,0,0,22,0,0,0,-1--1--1,,1|(-536,815)|
+1,129,130,82,100,0,0,22,0,0,0,-1--1--1,,1|(-536,747)|
+11,130,0,-536,781,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,131,Diffusion Flux 3,-477,781,55,10,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,132,134,84,4,0,0,22,0,0,0,-1--1--1,,1|(-536,1019)|
+1,133,134,83,100,0,0,22,0,0,0,-1--1--1,,1|(-536,937)|
+11,134,0,-536,978,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,135,Diffusion Flux 4,-477,978,55,10,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,136,C in Deep Ocean 2 per meter,-352,689,64,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,137,C in Deep Ocean 3 per meter,-352,873,64,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,138,C in Deep Ocean 4 per meter,-352,1084,64,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,139,84,138,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,140,91,138,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,141,82,136,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,142,89,136,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,143,83,137,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,144,90,137,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,145,36,11,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,146,85,82,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,147,86,83,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,148,87,84,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,149,Mean Depth of Adjacent 1 2 Layers,-267,597,73,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,150,Mean Depth of Adjacent 2 3 Layers,-267,781,73,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,151,Mean Depth of Adjacent 3 4 Layers,-267,978,73,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,152,102,127,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,153,136,127,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,154,149,127,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,155,88,149,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,156,89,149,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,157,150,131,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,158,136,131,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,159,137,131,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,160,90,150,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,161,89,150,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,162,137,135,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,163,138,135,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,164,151,135,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,165,90,151,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,166,91,151,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,167,Eddy diff coeff 1 2,-701,597,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,168,Eddy diff coeff 2 3,-701,781,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,169,Eddy diff coeff 3 4,-701,978,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,170,Eddy diff coeff index 1 2,-780,537,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,171,Eddy diff coeff index 2 3,-780,720,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,172,Eddy diff coeff index 3 4,-780,920,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,173,Eddy diff coeff mean 1 2,-780,651,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,174,Eddy diff coeff mean 2 3,-780,842,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,175,Eddy diff coeff mean 3 4,-780,1038,53,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,176,167,126,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,177,168,130,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,178,169,134,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,179,170,167,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,180,173,167,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,181,171,168,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,182,174,168,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,183,172,169,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,184,175,169,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,185,Layer Time Constant 1 2,-1019,597,47,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,186,Layer Time Constant 2 3,-1019,781,47,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,187,Layer Time Constant 3 4,-1019,978,47,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,188,Layer Depth 2,-948,689,50,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+10,189,Layer Depth 3,-948,873,50,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+10,190,Layer Depth 4,-948,1084,50,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,191,118,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,192,188,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,193,188,186,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,194,189,186,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,195,189,187,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,196,190,187,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,197,169,187,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,198,168,186,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,199,167,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,200,1,15,1,0,0,0,0,64,0,-1--1--1,,1|(-430,13)|
+1,201,1,48,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,202,48,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,203,50,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,204,10,31,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,205,Atmospheric Concentration CO2,-683,212,71,18,8,3,0,44,0,0,0,0,0-0-0,255-128-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,206,1,205,1,0,0,0,0,64,0,-1--1--1,,1|(-591,132)|
+1,207,74,205,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,208,75,205,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,209,Sensitivity of C flux to temp,88,218,55,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,210,Effect of Temp on C Flux Atm ML,88,154,65,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,211,209,210,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,212,210,48,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,213,Equilibrium C per meter in Mixed Layer,157,288,77,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,214,48,213,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,215,51,213,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,216,Init C in Deep Ocean per meter,191,840,62,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,217,213,216,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,218,216,36,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,219,88,36,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,220,89,85,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,221,216,85,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,222,216,86,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,223,90,86,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,224,216,87,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,225,91,87,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,226,Carbon Removal Impact Slope,53,-266,62,18,8,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,227,48,-502,-130,10,8,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,228,230,227,4,0,0,22,0,0,0,-1--1--1,,1|(-502,-102)|
+1,229,230,1,100,0,0,22,0,0,0,-1--1--1,,1|(-502,-60)|
+11,230,0,-502,-76,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,231,Carbon Removal Rate,-447,-76,52,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,232,Reference CO2 Removal Rate,-314,-44,58,18,8,131,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,233,232,231,1,0,0,0,0,128,0,-1--1--1,,1|(-420,-62)|
+10,234,CDR Policy Transition Period,-3,-66,63,18,8,3,0,40,0,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,235,234,231,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,236,Terrestrial carbon sink,-1,-210,43,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,237,15,236,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,238,19,236,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,239,Current year,-662,-306,54,10,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+10,240,Climate Action Year,-100,-41,59,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,241,240,231,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,242,Climate Policy Scenario,-90,-97,58,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,243,242,231,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,244,CH4 in Atmosphere,821,-156,50,23,3,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,245,N2O in Atmosphere,829,212,50,23,3,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,246,48,584,-156,10,8,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,247,249,246,100,0,0,22,0,192,0,-1--1--1,,1|(635,-156)|
+1,248,249,244,4,0,0,22,0,192,0,-1--1--1,,1|(730,-156)|
+11,249,0,683,-156,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,250,Total CH4 Emission,683,-125,37,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,251,48,593,209,10,8,0,3,0,40,-1,0,0,0,-1--1--1,-1--1--1,Arial|10||0-0-0,0,0,0,0,0,0
+1,252,254,251,100,0,0,22,0,192,0,-1--1--1,,1|(643,209)|
+1,253,254,245,4,0,0,22,0,192,0,-1--1--1,,1|(737,209)|
+11,254,0,689,209,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,255,Total N2O Emission,689,240,37,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,256,48,1093,211,10,8,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,257,259,245,100,0,0,22,0,192,0,-1--1--1,,1|(929,211)|
+1,258,259,256,4,0,0,22,0,192,0,-1--1--1,,1|(1037,211)|
+11,259,0,986,211,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,260,Total N2O Breakdown,986,243,42,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+12,261,48,1081,-156,10,8,0,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,262,264,244,100,0,0,22,0,192,0,-1--1--1,,1|(918,-156)|
+1,263,264,261,4,0,0,22,0,192,0,-1--1--1,,1|(1024,-156)|
+11,264,0,971,-156,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,265,Total CH4 Breakdown,971,-125,42,18,40,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,266,Atmospheric Concentration N2O,874,105,70,18,8,3,0,44,-1,0,0,0,0-0-0,255-128-64,Arial|10||0-0-0,0,0,0,0,0,0
+10,267,Atmospheric Concentration CH4,875,-47,70,18,8,3,0,44,-1,0,0,0,0-0-0,255-128-64,Arial|10||0-0-0,0,0,0,0,0,0
+12,268,0,-358,-685,444,22,3,7,0,45,-1,0,0,0,192-192-192,192-192-192,Arial|10||0-0-0,0,0,0,0,0,0
+Carbon Cycle
+12,269,0,860,-393,570,23,3,7,0,45,-1,0,0,0,192-192-192,192-192-192,Arial|10||0-0-0,0,0,0,0,0,0
+CH4 and N2O Cycle
+1,270,244,267,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,271,245,266,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,272,CH4 Concentration Ratio,688,-264,70,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,273,N2O Concentration Ratio,709,308,70,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,274,244,272,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,275,245,273,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,276,INIT CH4 in Atmosphere,820,-238,45,18,8,3,0,44,-1,0,0,0,0-0-0,128-255-128,Arial|10||0-0-0,0,0,0,0,0,0
+10,277,INIT N2O in Atmosphere,829,308,45,18,8,3,0,44,-1,0,0,0,0-0-0,128-255-128,Arial|10||0-0-0,0,0,0,0,0,0
+10,278,Atmospheric Lifetime of CH4,1165,-150,58,18,8,3,0,44,-1,0,0,0,0-0-0,255-0-128,Arial|10||0-0-0,0,0,0,0,0,0
+1,279,278,265,1,0,0,0,0,192,0,-1--1--1,,1|(1079,-123)|
+10,280,Atmospheric Lifetime of N2O,1164,257,58,18,8,3,0,44,-1,0,0,0,0-0-0,255-0-128,Arial|10||0-0-0,0,0,0,0,0,0
+1,281,280,260,1,0,0,0,0,192,0,-1--1--1,,1|(1078,190)|
+1,282,277,245,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+10,283,Total N2O Emissions,497,240,62,18,8,2,0,47,-1,0,0,0,128-128-128,255-128-255,Arial|10||128-128-128,0,0,0,0,0,0
+10,284,Total CH4 Emissions,504,-330,62,18,8,2,0,47,-1,0,0,0,128-128-128,255-128-255,Arial|10||128-128-128,0,0,0,0,0,0
+1,285,284,250,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,286,283,255,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,287,245,260,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,288,244,265,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,289,CH4 to CO2 via Oxidation in TonC,1660,-242,77,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,290,265,289,1,0,0,0,0,192,0,-1--1--1,,1|(1325,-122)|
+1,291,276,244,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+10,292,Atmospheric N2O Concentration 1900 AR6,1004,306,72,27,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,293,Atmospheric CH4 Concentration 1900 AR6,969,-302,72,27,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,294,292,277,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,295,293,276,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,296,TonCH4 to ppb,690,-50,55,10,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,297,296,267,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,298,TonN2O to ppb,694,104,55,10,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,299,298,266,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,300,Molar mass of CH4,477,-18,52,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,301,Total moles of air in atmosphere,374,-48,63,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,302,Ton to G CH4,431,-120,50,10,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,303,300,296,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,304,302,296,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,305,301,296,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,306,Molar mass of N2O,409,76,52,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,307,Total moles of air in atmosphere,330,126,68,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,308,306,298,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,309,307,298,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,310,ppb,370,-96,16,10,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,311,310,296,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,312,Ton to g N2O,349,162,48,10,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,313,312,298,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,314,ppb,431,187,25,10,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,315,314,298,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,316,TonN2O to ppb,967,358,45,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,317,316,277,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,318,276,272,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,319,277,273,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,320,TonCH4 to ppb,746,-309,45,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,321,320,276,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,322,Atmospheric CO2 Concentration 1900 AR6,-997,46,72,27,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,323,Molar mass of C,1366,-260,61,23,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,324,Molar mass of CH4,1508,-319,57,18,8,2,0,43,-1,0,0,0,128-128-128,0-0-0,Arial|10||128-128-128,0,0,0,0,0,0
+1,325,324,289,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,326,323,289,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,327,Dmnl Adjustment TonCO2,1393,-312,62,18,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,328,327,289,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,329,Temperature Change from Preindustrial,178,91,62,32,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,330,329,210,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,331,Total CO2 Emissions,-844,-60,53,23,8,3,0,4,-1,0,0,0,0-0-0,255-128-255,|||0-0-0,0,0,0,0,0,0
+1,332,331,7,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,333,CO2 to C,-813,61,43,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,334,333,7,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,335,Time,-973,-59,29,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,336,335,331,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,337,ss370 Conc CH4,1094,25,49,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,338,Time,1233,24,29,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,339,338,337,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,340,ss370 Conc N2O,1094,89,49,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,341,Time,1238,112,29,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,342,341,340,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,343,Natural N2O Emission,529,292,46,15,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+1,344,343,255,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,345,Natural CH4 Emissions,189,-390,35,16,8,3,0,40,-1,0,0,0,0-0-0,0-0-0,Arial|10||0-0-0,0,0,0,0,0,0
+10,346,Natural CH4 Emissions Flux Biosphere to CH4 Natural,401,-211,71,32,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,347,48,-573,-432,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,348,350,9,100,0,0,22,0,192,0,-1--1--1,,1|(-573,-320)|
+1,349,350,347,4,0,0,22,0,192,0,-1--1--1,,1|(-573,-392)|
+11,350,0,-573,-354,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,351,Flux Humus to CH4,-503,-354,62,23,40,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+12,352,48,-180,-409,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,353,355,8,100,0,0,22,0,192,0,-1--1--1,,1|(-180,-225)|
+1,354,355,352,4,0,0,22,0,192,0,-1--1--1,,1|(-180,-342)|
+11,355,0,-180,-277,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,356,Flux Biomass to CH4,-114,-277,58,23,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,357,Flux Biomass to CH4,220,-308,51,25,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,358,Flux Humus to CH4,216,-254,59,18,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,359,357,346,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,360,358,346,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,361,C to CH4,214,-203,43,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,362,361,346,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,363,8,356,1,0,0,0,0,192,0,-1--1--1,,1|(-98,-242)|
+10,364,Effect of Warming on CH4 Release from Biological Activity,-323,-523,70,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,365,Fractional Rate of CH4 Released from Biomass to Atm,-117,-485,73,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,366,9,351,1,0,0,0,0,192,0,-1--1--1,,1|(-504,-310)|
+1,367,364,356,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,368,365,356,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,369,Temperature Change from Preindustrial,-466,-619,53,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,370,369,364,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,371,Effect of Temperature on Land CH4 Flux,-149,-614,59,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,372,371,364,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,373,Fractional Rate of CH4 Released from Humus to Atm,-497,-488,73,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,374,373,351,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,375,364,351,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,376,346,250,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,377,48,-756,-38,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,378,380,377,100,0,0,22,0,192,0,-1--1--1,,1|(-714,-38)|
+1,379,380,1,4,0,0,22,0,192,0,-1--1--1,,1|(-629,-38)|
+11,380,0,-677,-38,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,381,CH4 Oxidation,-677,-24,56,6,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,382,CH4 to CO2 via Oxidation in TonC,-836,-126,63,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,383,382,381,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,384,Mt CH4 to tCH4,519,-241,59,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,385,384,250,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,386,KtN2O to tN2O,555,186,37,18,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,387,386,255,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,388,0,1512,154,247,197,8,15,0,0,1,0,0,0,0,0,0,0,0,0
+N2O_Conc
+10,389,Baseline Natural Flux,319,295,61,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,390,Effect of Warming on N2O Release from Biological Activity,497,371,95,27,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,391,Temperature Change from Preindustrial,281,393,52,27,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,392,391,390,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,393,Effective Sensitivity of Temperature on N2O Flux,430,462,79,18,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,394,393,390,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,395,389,343,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,396,390,343,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,397,Hist Conc N2O,1068,118,56,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,398,341,397,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,399,Time,319,336,29,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,400,Time,1194,188,29,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,401,73,68,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,402,"Non-Linear Lifetime of N2O",1166,316,58,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,403,"Non-Linear Lifetime of CH4",1168,-102,65,18,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Climate
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,79,0
+10,1,Heat in Atmosphere and Upper Ocean,1042,409,52,30,3,131,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,2,Heat in Deep Ocean 1,1037,575,52,30,3,131,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+12,3,48,1041,199,10,8,0,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,4,6,3,4,0,0,22,0,0,0,-1--1--1,,1|(1041,236)|
+1,5,6,1,100,0,0,22,0,0,0,-1--1--1,,1|(1041,328)|
+11,6,0,1041,271,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,7,Feedback Cooling,1109,271,38,18,40,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+12,8,48,1269,406,10,8,0,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,9,11,1,4,0,0,22,0,0,0,-1--1--1,,1|(1138,406)|
+1,10,11,8,100,0,0,22,0,0,0,-1--1--1,,1|(1226,406)|
+11,11,0,1188,406,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Effective Radiative Forcing,1188,430,65,18,40,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,13,15,2,4,0,0,22,0,0,0,-1--1--1,,1|(1042,519)|
+1,14,15,1,100,0,0,22,0,0,0,-1--1--1,,1|(1042,460)|
+11,15,0,1042,487,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,16,Heat Transfer 1,1100,487,56,10,40,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,17,Heat Transfer Coefficient 1,1352,487,50,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,18,Deep Ocean 1 Heat Capacity,609,575,54,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,19,INIT Deep Ocean 1 Temperature,789,637,70,18,8,3,0,36,0,0,0,0,-1--1--1,192-255-192,Arial||B|0-0-0,0,0,0,0,0,0
+10,20,INIT Atmospheric and Upper Ocean Temperature,789,483,78,27,8,3,0,36,0,0,0,0,-1--1--1,192-255-192,Arial||B|0-0-0,0,0,0,0,0,0
+10,21,Atmospheric and Upper Ocean Heat Capacity,609,409,69,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,22,Relative Deep 1 Ocean Temperature,789,575,73,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,23,18,2,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,24,19,2,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,25,18,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,26,2,22,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,27,22,15,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,28,Temperature Change from Preindustrial,762,360,78,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,29,21,28,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,30,28,15,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,31,1,28,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,32,28,6,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,33,Climate Feedback Parameter,1112,105,68,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,34,21,1,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,35,20,1,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,36,Heat Transfer Rate,1352,541,50,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,37,Heat Diffusion Covar,1509,541,52,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,38,Area,-239,776,19,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,39,Land Area Fraction,-239,631,39,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,40,Land Thickness,-239,565,57,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,41,Heat in Deep Ocean 2,1042,741,52,30,3,131,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,42,Heat in Deep Ocean 3,1042,907,52,30,3,131,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,43,Heat in Deep Ocean 4,1042,1075,52,30,3,131,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,44,46,41,4,0,0,22,0,0,0,-1--1--1,,1|(1042,687)|
+1,45,46,2,100,0,0,22,0,0,0,-1--1--1,,1|(1042,628)|
+11,46,0,1042,658,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,47,Heat Transfer 2,1100,658,56,10,40,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,48,50,42,4,0,0,22,0,0,0,-1--1--1,,1|(1042,853)|
+1,49,50,41,100,0,0,22,0,0,0,-1--1--1,,1|(1042,794)|
+11,50,0,1042,824,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,51,Heat Transfer 3,1100,824,56,10,40,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,52,54,43,4,0,0,22,0,0,0,-1--1--1,,1|(1042,1021)|
+1,53,54,42,100,0,0,22,0,0,0,-1--1--1,,1|(1042,961)|
+11,54,0,1042,991,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,55,Heat Transfer 4,1100,991,56,10,40,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,56,INIT Deep Ocean 2 Temperature,789,793,70,18,8,3,0,36,0,0,0,0,-1--1--1,192-255-192,Arial|||0-0-0,0,0,0,0,0,0
+10,57,INIT Deep Ocean 3 Temperature,789,961,70,18,8,3,0,36,0,0,0,0,-1--1--1,192-255-192,Arial|||0-0-0,0,0,0,0,0,0
+10,58,INIT Deep Ocean 4 Temperature,789,1127,70,18,8,3,0,36,0,0,0,0,-1--1--1,192-255-192,Arial|||0-0-0,0,0,0,0,0,0
+10,59,Deep Ocean 2 Heat Capacity,614,721,54,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,60,Deep Ocean 3 Heat Capacity,614,887,54,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,61,Deep Ocean 4 Heat Capacity,614,1055,54,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,62,56,41,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,63,59,41,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,64,57,42,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,65,60,42,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,66,58,43,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+1,67,61,43,0,0,0,0,0,64,1,-1--1--1,,1|(0,0)|
+10,68,Relative Deep 2 Ocean Temperature,789,741,73,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,69,Relative Deep 3 Ocean Temperature,789,907,73,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,70,Relative Deep 4 Ocean Temperature,789,1075,73,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,71,41,68,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,72,59,68,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,73,42,69,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,74,60,69,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,75,43,70,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,76,61,70,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,77,Mean Depth of Adjacent M 1 Layers,1188,541,80,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,78,77,16,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,79,17,16,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,80,33,7,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,81,"2xCO2 Forcing",1294,-51,55,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,82,Climate Sensitivity to 2xCO2,1298,14,68,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,83,81,33,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,84,82,33,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,85,Mean Depth of Adjacent 1 2 Layers,1188,711,78,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,86,Mean Depth of Adjacent 2 3 Layers,1188,879,78,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,87,Mean Depth of Adjacent 3 4 Layers,1188,1051,78,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,88,Eddy diff coeff M 1,1509,431,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,89,Eddy diff coeff 1 2,1509,601,37,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,90,Eddy diff coeff 2 3,1509,769,37,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,91,Eddy diff coeff 3 4,1509,936,37,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,92,36,17,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,93,77,17,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,94,37,17,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,95,88,17,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,96,Eddy diff coeff mean M 1,1509,486,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,97,96,17,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,98,Heat Transfer Coefficient 2,1352,658,50,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,99,Heat Transfer Coefficient 3,1352,824,50,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,100,Heat Transfer Coefficient 4,1352,991,50,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,101,Eddy diff coeff mean 1 2,1509,656,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,102,Eddy diff coeff mean 2 3,1509,824,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,103,Eddy diff coeff mean 3 4,1509,991,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,104,85,47,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,105,86,51,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,106,87,55,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,107,98,47,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,108,99,51,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,109,100,55,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,110,85,98,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,111,86,99,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,112,87,100,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,113,Heat Transfer Rate,1352,711,55,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,114,Heat Transfer Rate,1352,879,55,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,115,Heat Transfer Rate,1352,1051,55,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,116,Heat Diffusion Covar,1509,711,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,117,Heat Diffusion Covar,1509,879,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,118,Heat Diffusion Covar,1509,1051,57,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,119,113,98,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,120,114,99,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,121,115,100,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,122,118,100,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,123,117,99,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,124,116,98,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,125,89,98,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,126,101,98,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,127,90,99,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,128,102,99,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,129,91,100,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,130,103,100,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,131,Upper Layer Volume Vu,-67,565,46,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,132,Lower Layer Volume Vu 1,-67,631,47,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,133,Volumetric Heat Capacity,-67,359,59,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,134,38,131,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,135,39,131,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,136,40,131,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,137,Mixed Layer Depth,104,565,50,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,138,137,131,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,139,Lower Layer Volume Vu 2,-67,709,47,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,140,Lower Layer Volume Vu 3,-67,776,47,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,141,Lower Layer Volume Vu 4,-67,846,47,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,142,38,132,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,143,Layer Depth 1,104,629,50,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,144,Layer Depth 2,104,710,50,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,145,Layer Depth 3,104,775,50,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,146,Layer Depth 4,104,845,50,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,147,39,132,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,148,39,139,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,149,39,140,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,150,39,141,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,151,38,139,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,152,38,140,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,153,38,141,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,154,143,132,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,155,144,139,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,156,145,140,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,157,146,141,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,158,Mass Heat Capacity,-239,301,40,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,159,Watt per J s,-239,348,44,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,160,Density,-239,437,28,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,161,158,133,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,162,159,133,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,163,160,133,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,164,sec per Year,-239,385,46,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,165,164,133,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,166,22,46,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,167,68,46,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,168,68,50,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,169,69,50,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,170,69,54,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,171,70,54,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,172,CO2 Radiative Forcing Coefficient,2167,-162,70,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,173,Total Radiative Forcing,1334,265,55,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,174,CO2 Radiative Forcing New,1798,19,57,25,8,3,0,36,0,0,0,0,0-0-0,255-128-128,Arial|||0-0-0,0,0,0,0,0,0
+10,175,Other Forcings,1798,487,54,10,8,3,0,36,0,0,0,0,0-0-0,255-128-128,Arial|||0-0-0,0,0,0,0,0,0
+1,176,174,173,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,177,175,173,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,178,172,174,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,179,173,11,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,180,Equilibrium Temperature,1294,73,47,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,181,33,180,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,182,174,180,1,0,0,0,0,64,0,-1--1--1,,1|(1549,15)|
+10,183,Temperature Anomalies GISS v Preindustrial,751,223,67,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,184,Temperature Anomalies HadCRUT4 v Preindustrial,864,300,88,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,185,Heat to 700m,-67,963,49,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,186,Heat to 2000m,-67,1170,54,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,187,185,186,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,188,Heat to 700m J,-239,963,55,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,189,Heat to 2000m J,-239,1170,60,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,190,185,188,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,191,186,189,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,192,Land Area Fraction,-157,1072,44,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,193,192,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,194,J per W Year,-412,1072,47,10,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,195,Offset 700m Heat,-396,963,45,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,196,192,188,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,197,Area,-319,1072,28,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,198,195,188,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,199,194,188,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,200,197,188,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,201,28,183,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,202,28,184,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,203,Total Radiative Forcing AIM RCP60,3021,302,74,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,204,Total Radiative Forcing MiniCAM RCP45,3021,214,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,205,Total Radiative Forcing IMAGE RCP26,3021,134,57,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,206,Total Radiative Forcing MESSAGE RCP85,3021,392,72,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,207,CO2 Radiative Forcing AIM RCP60,3021,888,74,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,208,CO2 Radiative Forcing MiniCAM RCP45,3021,808,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,209,CO2 Radiative Forcing IMAGE RCP26,3021,720,57,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,210,CO2 Radiative Forcing MESSAGE RCP85,3021,970,72,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,211,CH4 Radiative Forcing History,3710,62,56,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,212,CH4 Radiative Forcing RCP60,3711,434,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,213,CH4 Radiative Forcing RCP45,3711,346,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,214,CH4 Radiative Forcing RCP26,3712,215,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,215,CH4 Radiative Forcing RCP85,3711,524,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,216,N2O Radiative Forcing History,4493,62,56,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,217,N2O Radiative Forcing RCP60,4508,426,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,218,N2O Radiative Forcing RCP45,4508,338,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,219,N2O Radiative Forcing RCP26,4499,204,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,220,N2O Radiative Forcing RCP85,4508,516,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,221,HFC Radiative Forcing History,3755,1262,56,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,222,HFC Radiative Forcing AIM RCP60,3758,1626,74,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,223,HFC Radiative Forcing MiniCAM RCP45,3758,1546,65,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,224,HFC Radiative Forcing IMAGE RCP26,3759,1406,57,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,225,HFC Radiative Forcing MESSAGE RCP85,3758,1708,72,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,226,Other Radiative Forcing History,4538,1262,57,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,227,Other Radiative Forcing AIM RCP60,4538,1510,74,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,228,Other Radiative Forcing MiniCAM RCP45,4538,1430,65,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,229,Other Radiative Forcing IMAGE RCP26,4538,1342,57,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,230,Other Radiative Forcing MESSAGE RCP85,4538,1592,72,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,231,TABLE CH4 Radiative Forcing,3927,62,65,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,232,TABLE CH4 Radiative Forcing SSP2 RCP60,3928,434,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,233,Time,3512,295,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,234,TABLE CH4 Radiative Forcing SSP2 RCP45,3928,346,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,235,TABLE CH4 Radiative Forcing SSP2 RCP26,3929,215,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,236,TABLE CH4 Radiative Forcing SSP2 RCP85,3928,524,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,237,TABLE N2O Radiative Forcing,4710,62,65,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,238,TABLE N2O Radiative Forcing SSP2 RCP60,4725,426,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,239,TABLE N2O Radiative Forcing SSP2 RCP45,4725,338,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,240,TABLE N2O Radiative Forcing SSP2 RCP26,4716,204,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,241,TABLE N2O Radiative Forcing SSP2 RCP85,4725,516,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,242,TABLE HFC Radiative Forcing,3972,1262,65,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,243,TABLE HFC Radiative Forcing AIM RCP60,3975,1626,81,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,244,TABLE HFC Radiative Forcing MiniCAM RCP45,3975,1546,83,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,245,TABLE HFC Radiative Forcing IMAGE RCP26,3976,1406,86,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,246,TABLE HFC Radiative Forcing MESSAGE RCP85,3975,1708,83,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,247,TABLE Other Radiative Forcing,4755,1262,65,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,248,TABLE Other Radiative Forcing AIM RCP60,4755,1510,81,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,249,TABLE Other Radiative Forcing MiniCAM RCP45,4755,1430,86,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,250,TABLE Other Radiative Forcing IMAGE RCP26,4755,1342,65,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,251,TABLE Other Radiative Forcing MESSAGE RCP85,4755,1592,86,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+1,252,231,211,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,253,235,214,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,254,234,213,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,255,232,212,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,256,236,215,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,257,233,215,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,258,233,212,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,259,233,213,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,260,233,214,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,261,233,211,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,262,RCP Scenario,3348,68,53,10,8,3,0,36,0,0,0,0,0-0-0,131-106-162,Arial|||0-0-0,0,0,0,0,0,0
+10,263,CH4 Radiative Forcing,3510,63,54,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,264,211,263,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,265,214,263,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,266,213,263,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,267,212,263,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,268,215,263,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,269,262,263,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,270,233,263,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,271,237,216,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,272,240,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,273,239,218,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,274,238,217,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,275,241,220,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,276,RCP Scenario,4153,62,39,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,277,Time,4322,214,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,278,N2O Radiative Forcing,4323,63,54,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,279,277,216,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,280,277,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,281,277,218,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,282,277,217,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,283,277,220,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,284,276,278,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,285,216,278,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,286,219,278,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,287,218,278,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,288,217,278,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,289,220,278,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,290,Time,4368,1429,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,291,Time,3555,1430,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,292,RCP Scenario,3401,1262,39,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,293,RCP Scenario,4198,1262,39,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,294,HFC Radiative Forcing,3555,1262,55,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,295,Other Radiative Forcing,4368,1262,57,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+1,296,293,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,297,292,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,298,291,221,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,299,277,278,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,300,291,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,301,290,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,302,290,226,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,303,290,229,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,304,290,228,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,305,290,227,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,306,290,230,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,307,291,224,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,308,291,223,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,309,291,222,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,310,291,225,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,311,221,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,312,224,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,313,223,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,314,222,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,315,225,294,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,316,242,221,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,317,245,224,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,318,244,223,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,319,243,222,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,320,246,225,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,321,226,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,322,229,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,323,228,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,324,227,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,325,230,295,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,326,247,226,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,327,250,229,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,328,249,228,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,329,248,227,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,330,251,230,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,331,CH4 Radiative Forcing,2149,542,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial||B|128-128-128,0,0,0,0,0,0
+10,332,HFC Radiative Forcing,2149,712,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,333,N2O Radiative Forcing,2149,598,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,334,Other Radiative Forcing,2149,655,62,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,335,Heat in Atmosphere and Upper Ocean,104,963,78,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,336,Heat in Deep Ocean 1,104,1032,54,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,337,Heat in Deep Ocean 2,104,1101,54,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,338,Heat in Deep Ocean 3,104,1170,54,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,339,338,186,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,340,335,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,341,336,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,342,337,185,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,343,Volumetric Heat Capacity,422,516,64,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,344,Volumetric Heat Capacity,422,681,64,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,345,Volumetric Heat Capacity,422,847,64,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,346,Volumetric Heat Capacity,422,1015,64,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,347,343,18,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,348,344,59,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,349,345,60,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,350,346,61,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,351,Area,422,627,28,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,352,Area,422,792,28,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,353,Area,422,958,28,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,354,Area,422,1134,28,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,355,354,61,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,356,353,60,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,357,352,59,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,358,351,18,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,359,Area,422,460,28,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,360,359,21,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,361,Volumetric Heat Capacity,422,349,64,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,362,361,21,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,363,Upper Layer Volume Vu,422,408,50,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,364,363,21,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,365,Lower Layer Volume Vu 1,422,575,52,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,366,Lower Layer Volume Vu 2,422,740,52,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,367,Lower Layer Volume Vu 3,422,906,52,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,368,Lower Layer Volume Vu 4,422,1074,52,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,369,368,61,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,370,367,60,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,371,366,59,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,372,365,18,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,373,192,189,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,374,197,189,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,375,194,189,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,376,Dimensionless Time,3512,383,55,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,377,376,211,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,378,376,214,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,379,376,213,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,380,376,212,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,381,376,215,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,382,Dimensionless Time,3555,1510,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,383,Dimensionless Time,4322,302,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,384,Dimensionless Time,4367,1510,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+1,385,383,217,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,386,383,220,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,387,383,218,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,388,383,219,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,389,383,216,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,390,382,221,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,391,382,224,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,392,382,223,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,393,382,222,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,394,382,225,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,395,384,226,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,396,384,229,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,397,384,228,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,398,384,227,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,399,384,230,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,400,CO2 Radiative Forcing Indicator,1807,-175,61,18,8,3,0,34,0,0,0,0,-1--1--1,0-0-0,Arial|||255-0-255,0,0,0,0,0,0
+1,401,174,400,1,0,0,0,0,128,0,-1--1--1,,1|(1820,-124)|
+10,402,TABLE CH4 Radiative Forcing SSP2 RCP34,3928,259,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,403,CH4 Radiative Forcing RCP34,3712,261,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,404,TABLE HFC Radiative Forcing AIM SSP3 RCP7,3982,1472,83,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,405,HFC Radiative Forcing AIM RCP7,3769,1467,69,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,406,TABLE Other Radiative Forcing AIM SSP3 RCP7,4757,1665,86,27,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,407,Other Radiative Forcing AIM RCP7,4552,1679,69,18,8,3,0,34,0,0,0,0,0-0-0,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,408,TABLE N2O Radiative Forcing SSP2 RCP34,4723,278,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,409,N2O Radiative Forcing RCP34,4504,272,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,410,376,403,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,411,Time,3712,301,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,412,411,403,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,413,Time,3752,1510,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+1,414,413,405,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,415,Time,4552,1719,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+1,416,415,407,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,417,Time,4553,305,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,418,417,409,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,419,382,405,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,420,404,405,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,421,402,403,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,422,383,409,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,423,408,409,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,424,384,407,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,425,406,407,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,426,405,294,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,427,403,263,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,428,409,278,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,429,407,295,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,430,CH4 Radiative Forcing RCP19,3716,129,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,431,TABLE CH4 Radiative Forcing SSP2 RCP19,3933,129,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,432,431,430,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,433,376,430,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,434,Time,3716,161,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,435,434,430,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,436,430,263,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,437,N2O Radiative Forcing RCP19,4501,138,58,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,438,TABLE N2O Radiative Forcing SSP2 RCP19,4718,138,83,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,439,438,437,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,440,Time,4501,178,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,441,440,437,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,442,383,437,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,443,437,278,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,444,F Gases Radiative Forcing History,3705,669,69,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,445,F Gases Radiative Forcing RCP60,3706,1041,69,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,446,F Gases Radiative Forcing RCP45,3706,953,69,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,447,F Gases Radiative Forcing RCP26,3707,822,69,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,448,F Gases Radiative Forcing RCP85,3706,1131,69,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,449,TABLE F Gases Radiative Forcing,3922,669,65,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,450,TABLE F Gases Radiative Forcing SSP2 RCP60,3923,1041,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,451,Time,3507,902,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,452,TABLE F Gases Radiative Forcing SSP2 RCP45,3923,953,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,453,TABLE F Gases Radiative Forcing SSP2 RCP26,3924,822,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,454,TABLE F Gases Radiative Forcing SSP2 RCP85,3923,1131,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,455,449,444,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,456,453,447,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,457,452,446,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,458,450,445,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,459,454,448,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,460,451,448,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,461,451,445,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,462,451,446,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,463,451,447,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,464,451,444,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,465,F Gases Radiative Forcing,3506,681,65,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,466,444,465,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,467,447,465,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,468,446,465,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,469,445,465,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,470,448,465,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,471,451,465,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,472,TABLE F Gases Radiative Forcing SSP2 RCP34,3923,866,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,473,F Gases Radiative Forcing RCP34,3707,868,69,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,474,Time,3707,908,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,475,474,473,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,476,472,473,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,477,473,465,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,478,F Gases Radiative Forcing RCP19,3711,736,69,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,479,TABLE F Gases Radiative Forcing SSP2 RCP19,3928,736,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,480,479,478,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,481,Time,3711,768,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,482,481,478,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,483,478,465,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,484,RCP Scenario,3303,679,39,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,485,484,465,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,486,Dimensionless Time,3481,979,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,487,486,444,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,488,486,478,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,489,486,447,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,490,486,473,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,491,486,446,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,492,486,445,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,493,486,448,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,494,Time,3759,1373,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||192-192-192,0,0,0,0,0,0
+10,495,Other Anthropogenic Radiative Forcing History,4645,688,75,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,496,Other Anhtropogenic Radiative Forcing RCP60,4638,1047,75,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,497,Other Anthropogenic Radiative Forcing RCP45,4638,959,75,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,498,Other Anthropogenic Radiative Forcing RCP26,4639,813,75,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,499,Other Anthropogenic Radiative Forcing RCP85,4638,1137,75,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,500,TABLE Other Anthropogenic Radiative Forcing,4854,675,65,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,501,TABLE Other Anthropogenic Radiative Forcing SSP2 RCP60,4855,1047,90,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,502,TABLE Other Anthropogenic Radiative Forcing SSP2 RCP45,4855,959,90,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,503,TABLE Other Anthropogenic Radiative Forcing SSP2 RCP26,4874,808,90,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,504,TABLE Other Anthropogenic Radiative Forcing SSP2 RCP85,4855,1137,90,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,505,500,495,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,506,503,498,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,507,502,497,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,508,501,496,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,509,504,499,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,510,Other Anthropogenic Radiative Forcing,4426,668,75,18,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,511,495,510,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,512,498,510,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,513,497,510,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,514,496,510,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,515,499,510,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,516,TABLE Other Anthropogenic Radiative Forcing SSP2 RCP34,4855,872,90,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,517,Other Anthropogenic Radiative Forcing RCP34,4639,874,75,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,518,Time,4639,914,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,519,518,517,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,520,516,517,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+1,521,517,510,0,0,0,0,0,128,0,-1--1--1,,1|(0,0)|
+10,522,Other Anthropogenic Radiative Forcing RCP19,4643,742,75,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,523,TABLE Other Anthropogenic Radiative Forcing SSP2 RCP19,4860,742,90,27,8,3,0,32,0,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,524,523,522,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,525,Time,4643,774,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,526,525,522,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+1,527,522,510,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,528,Time,4674,615,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,529,528,495,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,530,Time,4638,1063,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,531,530,496,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,532,Time,4638,975,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,533,532,497,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,534,Time,4745,800,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,535,534,498,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,536,Time,4638,1153,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,537,536,499,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,538,Time,4393,754,29,10,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,539,538,510,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,540,Dimensionless Time,4415,910,59,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,541,540,495,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,542,540,522,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,543,540,498,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,544,540,517,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,545,540,497,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,546,540,496,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,547,540,499,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,548,RCP Scenario,4283,680,39,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,549,548,510,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,550,F Gases Radiative Forcing,2149,775,70,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,551,Other Anthropogenic Radiative Forcing,2149,850,70,27,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,552,550,175,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,553,551,175,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,554,N2O Radiative Forcing New,1798,155,57,19,8,3,0,52,-1,0,0,0,0-0-0,255-128-128,Arial||B|0-0-0,0,0,0,0,0,0
+10,555,CH4 Radiative Forcing New,1798,337,57,19,8,3,0,52,-1,0,0,0,0-0-0,255-128-128,Arial||B|0-0-0,0,0,0,0,0,0
+10,556,N2O Radiative Forcing Coefficient,2157,50,70,18,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,557,CH4 Radiative Efficiency,2148,286,54,18,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,558,556,554,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,559,557,555,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,560,Atmospheric N2O Concentration Preindustrial,2157,180,66,27,8,3,0,36,-1,0,0,0,0-0-0,255-255-255,Arial|||0-0-0,0,0,0,0,0,0
+10,561,Atmospheric CH4 Concentration Preindustrial,2148,409,66,27,8,3,0,36,-1,0,0,0,0-0-0,255-255-255,Arial|||0-0-0,0,0,0,0,0,0
+1,562,561,555,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,563,560,554,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,564,Overlap Coefficient,2870,-428,40,18,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,565,Dmnl Adjustment ppm,2609,11,59,18,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,566,Overlap Exponent,2870,-377,35,18,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,567,568,554,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,568,Atmospheric Concentration N2O,2157,115,75,18,8,2,0,39,-1,0,0,0,128-128-128,255-128-128,Arial|||128-128-128,0,0,0,0,0,0
+10,569,Atmospheric Concentration CH4,2148,343,75,18,8,2,0,39,-1,0,0,0,128-128-128,255-128-128,Arial|||128-128-128,0,0,0,0,0,0
+1,570,569,555,0,0,0,0,0,64,0,-1--1--1,,1|(0,0)|
+10,571,CO2 Radiative Forcing Coefficient,1491,-51,74,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,572,571,81,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+12,573,0,2037,-303,361,19,3,7,0,36,-1,0,0,0,0-0-0,192-192-192,Arial|||0-0-0,0,0,0,0,0,0
+Radiative Forcing (Meinshausen et al., 2020)
+10,574,a prime,2350,-165,29,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,575,C a max,2460,-240,31,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,576,Atmospheric CO2 Concentration Preindustrial,2161,-30,66,27,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,577,576,174,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,578,a1,2707,-268,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,579,b1,2684,-219,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,580,c1,2682,-148,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,581,d1,2789,-207,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,582,a N2O,2457,-119,25,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,583,a2,2391,38,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,584,b2,2448,74,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,585,c2,2396,103,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,586,d2,2429,136,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,587,583,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,588,584,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,589,585,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,590,586,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,591,Atmospheric Concentration N2O,2609,115,75,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,592,Atmospheric Concentration CO2,2609,66,75,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,593,Atmospheric Concentration CH4,2609,168,75,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,594,568,556,1,0,0,0,0,192,0,-1--1--1,,1|(2276,112)|
+1,595,569,557,1,0,0,0,0,192,0,-1--1--1,,1|(2247,324)|
+10,596,a3,2414,277,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,597,b3,2425,323,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+10,598,d3,2415,366,11,10,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,599,596,557,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,600,597,557,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,601,598,557,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,602,Atmospheric Concentration N2O,2609,352,75,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,603,Atmospheric Concentration CO2,2167,-103,75,18,8,2,0,39,-1,0,0,0,128-128-128,255-128-128,Arial|||128-128-128,0,0,0,0,0,0
+10,604,Atmospheric Concentration CH4,2609,401,75,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,605,602,557,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,606,604,557,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,607,592,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,608,591,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,609,593,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,610,Atmospheric Concentration N2O,2814,-112,75,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+10,611,Atmospheric CO2 Concentration Preindustrial,2471,-325,71,27,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,612,611,575,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,613,579,575,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,614,578,575,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,615,610,582,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,616,580,582,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,617,581,574,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,618,574,172,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,619,582,172,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,620,575,574,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,621,578,574,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,622,579,574,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,623,611,574,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,624,603,574,1,0,0,0,0,192,0,-1--1--1,,1|(2326,-99)|
+1,625,603,174,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,626,Dmnl Adjustment ppb,2609,-40,57,18,8,3,0,32,-1,0,0,0,0-0-0,0-0-0,Arial|||0-0-0,0,0,0,0,0,0
+1,627,626,582,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,628,626,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,629,565,556,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,630,Dmnl Adjustment ppb,1941,238,62,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,631,630,554,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,632,630,555,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,633,Dmnl Adjustment ppb,2609,310,62,18,8,2,0,35,-1,0,0,0,128-128-128,0-0-0,Arial|||128-128-128,0,0,0,0,0,0
+1,634,633,557,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,635,555,173,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,636,554,173,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Indicators
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,0
+10,1,C in Humus,254,55,53,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,2,C in Atmosphere,125,48,51,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,3,C in Biomass,383,54,60,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,4,Carbon Pool Atmosphere,120,150,48,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,Carbon Pool Soil,256,148,63,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,6,Carbon Pool Plant,385,147,48,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,7,2,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,8,1,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,9,3,6,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,10,CO2 to C,217,256,46,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,11,10,6,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,12,10,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,13,10,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,14,TonCO2 to MTonCO2,391,297,43,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,15,14,6,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,16,14,5,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,17,14,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,18,Net Primary Productivity,536,146,45,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,19,Flux Atmosphere to Biomass,470,2,55,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,20,19,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,21,14,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,22,10,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,Airborne Fraction,736,149,43,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,24,Flux Atmosphere to Biomass,810,-33,67,18,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,25,Flux Atmosphere to Ocean,1208,4,67,18,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,26,Total C Emission,672,68,40,18,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,27,26,23,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,28,24,23,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,29,CH4 Oxidation,1245,51,64,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,30,Net Land to Atmosphere Flux CO2,688,251,62,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Flux Biomass to Atmosphere,853,242,64,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,32,Flux Humus to Atmosphere,810,306,57,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,33,Flux Atmosphere to Biomass,610,337,55,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,34,31,30,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,35,32,30,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,36,33,30,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,37,14,30,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,38,10,30,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,39,Heat Uptake,638,412,47,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,40,Feedback Cooling,799,387,44,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,41,Effective Radiative Forcing,780,439,38,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,42,41,39,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,43,40,39,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,44,Heat Content Ocean,640,510,49,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Heat Content 0 700m,641,584,56,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Heat Content 700 2000m,644,649,49,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,Heat in Deep Ocean 3,853,669,54,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,48,Heat in Deep Ocean 2,878,620,54,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,49,Heat in Atmosphere and Upper Ocean,853,510,61,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,50,Conversion to ZJ,394,485,62,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,51,81,44,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,52,48,44,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,53,47,44,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,54,81,45,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,55,48,46,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,56,50,44,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,57,50,45,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,58,50,46,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,59,50,39,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,60,Earth Surface Area,220,411,51,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,61,second to years,82,431,59,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,62,60,50,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,63,61,50,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,64,J to ZJ,166,472,43,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,65,64,50,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,66,"unit W to J/s",85,503,46,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,67,66,50,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,68,Net CH4 Emissions in MTonCH4,1001,247,62,28,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,69,Total CH4 Emission,1150,110,43,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,70,Mt CH4 to tCH4,1141,275,43,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,71,70,68,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,72,Net Ocean to Atmosphere Flux CO2,1018,341,62,23,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,73,Flux Atmosphere to Ocean,1181,357,55,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,74,73,72,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,75,TonCO2 to MTonCO2,1149,407,46,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,76,75,72,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,77,CO2 to C,1028,421,46,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,78,77,72,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,79,Total CH4 Breakdown,1158,209,48,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,80,79,68,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,81,Heat in Deep Ocean 1,864,575,54,18,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+10,82,Flux Biomass to Humus,585,-3,64,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,83,82,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,84,Flux Atmosphere to Ocean,942,76,55,22,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,85,84,23,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,86,CH4 Oxidation,984,12,64,10,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,87,86,23,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,88,Flux Humus to Atmosphere,826,45,57,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,89,88,23,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,90,Flux Biomass to Atmosphere,884,147,64,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,91,90,23,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,92,Natural CH4 Emissions,1080,178,51,16,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|||128-128-128,0,0,0,0,0,0
+1,93,92,68,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+///---\\\
+:GRAPH CH4_Conc
+:TITLE CH4 Conc
+:X-MIN 1900
+:X-MAX 2015
+:SCALE
+:VAR ss370 Conc CH4
+:Y-MIN 0
+:Y-MAX 2000
+:SCALE
+:VAR Atmospheric Concentration CH4
+:Y-MIN 0
+:Y-MAX 2000
+
+:GRAPH N2O_Conc
+:TITLE N2O Conc
+:X-MIN 1900
+:X-MAX 2100
+:SCALE
+:VAR Hist Conc N2O
+:Y-MIN 250
+:Y-MAX 500
+:SCALE
+:VAR Atmospheric Concentration N2O
+:Y-MIN 250
+:Y-MAX 500
+:L<%^E!@
+1:current.vdfx
+4:Time
+5:Baseline Natural Flux
+9:current
+19:90,0
+24:1900
+25:2100
+26:2100
+22:Meter,m
+22:Watt,W
+11:test1.voc
+100:test1.voc
+12:Test.vpd
+101:Test.vpd
+15:1,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Arial|10||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

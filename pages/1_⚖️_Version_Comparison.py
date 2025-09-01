@@ -3,7 +3,7 @@ import tempfile
 from pathlib import Path
 from typing import Dict, Tuple, List
 
-st.set_page_config(layout="wide", page_title="Vensim Version Comparisons")
+st.set_page_config(layout="wide", page_title="Version Comparisons", page_icon="⚖️")
 st.markdown(
     """
     <style>
@@ -45,14 +45,15 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.title("Vensim Version Comparisons")
-st.caption("Built for SD Modelling Teams with bad Version Control practices")
-st.caption(
+st.title("⚖️ Version Comparisons")
+st.caption("Built for Modelling Teams with terrible Version Control practices")
+st.markdown(
     """
     Upload two `.mdl` files to compare. The tool will show:  
     🔹 **Changed formulas** for variables present in both models  
     🔹 **New variables in Model A**  
     🔹 **New variables in Model B**
+
     """
     )
 
