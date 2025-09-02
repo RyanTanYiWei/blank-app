@@ -46,7 +46,10 @@ st.markdown(
 )
 
 st.title("⚖️ Version Comparisons")
-st.caption("Built for Modelling Teams with terrible Version Control practices")
+st.caption("Built for Modelling Teams with Terrible Version Control Practices")
+st.warning(
+    "⚠️ This tool assumes two model files represent different **versions** of the same model."
+)
 st.markdown(
     """
     Upload two `.mdl` files to compare. The tool will show:  
@@ -214,7 +217,8 @@ def diff_equation_maps(a: Dict[str, str], b: Dict[str, str]) -> Tuple[Dict[str, 
 
 
 if file_a and file_b:
-    recompute = st.button("Compare models")
+    recompute = st.button("Compare Models")
+    st.info("Click 'Compare Model' to extract equations and compare changes.")
     if recompute:
         with st.spinner("Parsing models with PySD..."):
             path_a = save_to_temp(file_a)
