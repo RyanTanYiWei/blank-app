@@ -26,15 +26,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("🧩 Sub Model Analysis")
-st.caption("Built for Modellers that struggle with 'what connects to where'")
+st.caption("Built for Modellers with Many the What-Connects-to-Where Questions")
 st.warning(
     "⚠️ This tool assumes that each **view** in your Vensim model represents a **submodel**. "
 )
 
 st.markdown("""
-Upload a `.mdl` file. This tool should only be used **for models that use views as a way to modularise**, 
-and the analysis revolves around the assumption that a view is a submodel.  
-🔹 Split variables by their views  
+Upload a `.mdl` file. This tool will shows  
+🔹 Split variables by model views  
 🔹 Display an interactive network of connections between views  
 🔹 List variables from one view are used in formulas of another  
 🔹 Download view-to-view matrix and shared variables as CSV  
