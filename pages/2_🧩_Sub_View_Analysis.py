@@ -13,17 +13,12 @@ if "timings" not in st.session_state:
 
 st.set_page_config(layout="wide", page_title="View Connections", page_icon="🧩")
 
-st.markdown("""
-<style>
-  .block-container {max-width: 1800px; padding-left: 10rem; padding-right: 10rem;}
-  pre, code { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
-  pre { border: 1px solid rgba(0,0,0,0.08); border-radius: 6px; padding: 0.75rem; }
-  [data-testid="stMetricValue"] { font-size: 1.5rem; font-weight: 700; color: #2e86de; }
-  [data-testid="stMetricLabel"] { font-size: 0.9rem; font-weight: 500; opacity: 0.8; }
-  .css-1ht1j8u, .css-1r6slb0 { padding: 1rem !important; border-radius: 12px !important; box-shadow: 0 2px 6px rgba(0,0,0,0.08); background: #ffffff; }
-  h2, h3, .stSubheader { color: #1a5276; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.3rem; margin-bottom: 1rem; }
-</style>
-""", unsafe_allow_html=True)
+# Path to CSS file
+css_file = Path(__file__).parent.parent / "assets" / "style.css"
+
+if css_file.exists():
+    css_content = css_file.read_text()
+    st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
 
 st.title("🧩 Sub Model Analysis")
 st.caption("Built for Modellers with Many the What-Connects-to-Where Questions")
