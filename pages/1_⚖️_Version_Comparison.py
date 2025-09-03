@@ -13,17 +13,14 @@ if css_file.exists():
     st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
 
 st.title("⚖️ Version Comparisons")
-st.caption("Built for Modelling Teams with Terrible Version Control Practices")
-st.warning(
-    "⚠️ This tool assumes two model files represent different **versions** of the same model."
-)
+st.caption("Built for Modelling Teams Who Struggle With Version Control")
+st.warning("⚠️ This tool assumes two model files represent different **versions** of the same model.")
 st.markdown(
     """
     Upload two `.mdl` files to compare. The tool will show:  
     🔹 **Changed formulas** for variables present in both models  
-    🔹 **New variables in Model A**  
-    🔹 **New variables in Model B**
-
+    🔹 **New variables** in Model A  
+    🔹 **New variables** in Model B  
     """
     )
 

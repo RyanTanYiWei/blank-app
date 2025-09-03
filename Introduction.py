@@ -9,6 +9,16 @@ st.write("# Suite of Vensim Internal Tools")
 
 st.sidebar.success("Select Tools Above")
 
+st.sidebar.markdown(
+    """
+    <!-- GitHub Repo Badge -->
+    <a href="https://github.com/RyanTanYiWei/vensim-toolso" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-Repo-black?logo=github" alt="GitHub Repo">
+    </a>
+""",
+    unsafe_allow_html=True,
+)
+
 st.markdown(
     """
     <style>
@@ -51,19 +61,28 @@ st.markdown(
 )
 
 st.markdown(
-    """
-    This suite of tools is designed for large Vensim-based System Dynamics (SD) projects
-    that are often contained in single files. These tools are meant to compensate for the inflexibilities of compartmentalization that arise from the strong visual elements of system dynamics models, as compared to traditional code-based models. By using these tools, you can enhance internal understanding 
-    of existing model versions as part of your workflow.
+"""
+This suite of tools is designed for large Vensim-based System Dynamics (SD) projects that are often contained in single files. These tools are meant to compensate for the inflexibilities of compartmentalization that arise from the strong visual elements of system dynamics models, as compared to traditional code-based models. By using these tools, you can enhance internal understanding 
+of existing model versions as part of your workflow.
 
-    #### 👈 Key Tools
-    1. **⚖️ Version Comparison**  
-       Compare two versions of a model not just visually, but also at the level of their **mathematical formulation**. 
-       This ensures consistency and reveals meaningful changes beyond the visual diagrams.
+#### 👈 Key Tools
+1. **⚖️ Version Comparison**  
+   Compare two versions of a model not just visually, but also at the level of their **mathematical formulation**. 
+   This ensures consistency and reveals meaningful changes beyond the visual diagrams.
 
-    2. **🧩 Sub Model Analysis**  
-       When a model has multiple views representing different modules, this tool helps you understand 
-       how modules are linked through shadow variables. It exposes the **linkages** embedded in the SD model, 
-       making it easier to understand the conceptual structure of the model.
-    """
+2. **🧩 Sub Model Analysis**  
+   When a model has multiple views representing different modules, this tool helps you understand 
+   how modules are linked through shadow variables. It exposes the **linkages** embedded in the SD model, 
+   making it easier to understand the conceptual structure of the model.
+
+3. **🕸 CLD to Network Conversion**  
+   Convert causal loop diagrams (CLDs) from Vensim to typical **network formats** (i.e., node and edge lists). This tool does not perform any analytical operations; it does only the "conversion", allowing visualization and analysis to be conducted on other plaforms.
+---
+
+#### 🔮 Future Enhancements
+- *(Sandeep)* **Improve colour schemes** in Version Comparison to make differences easier to spot.  
+- *(Sandeep)* **Enable saving and uploading of parsed files** to reduce waiting times when re-running analyses.  
+- *(Ryan)* **Provide useful network metrics** (e.g., centrality measures, feedback loop detection) in CLD to Network Conversion to enrich insights beyond structural export. 
+"""
+
 )

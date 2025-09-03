@@ -21,17 +21,15 @@ if css_file.exists():
     st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
 
 st.title("🧩 Sub Model Analysis")
-st.caption("Built for Modellers with Many the What-Connects-to-Where Questions")
-st.warning(
-    "⚠️ This tool assumes that each **view** in your Vensim model represents a **submodel**. "
-)
+st.caption("Built for Modellers With Many What-Connects-to-Where Questions")
+st.warning("⚠️ This tool assumes that each **view** in your Vensim model represents a **submodel**. ")
 
 st.markdown("""
-Upload a `.mdl` file. This tool will shows  
-🔹 Split variables by model views  
-🔹 Display an interactive network of connections between views  
-🔹 List variables from one view are used in formulas of another  
-🔹 Download view-to-view matrix and shared variables as CSV  
+Upload a `.mdl` file. This tool will:  
+🔹 **Split** variables by model views  
+🔹 **Display** a network of connections between views  
+🔹 **Explore** variables from one view are used in formulas of another (i.e. use of *shadow variables*)  
+🔹 **Download** view-to-view matrix and shared variables as CSV  
 """)
 
 # --- File upload ---

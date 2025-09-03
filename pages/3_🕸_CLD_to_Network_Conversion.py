@@ -16,16 +16,15 @@ if css_file.exists():
 
 
 st.title("🕸 CLD to Network Conversion")
-st.caption("Oh, You do System Dynamics AND Network Analysis?")
+st.caption("Oh, You Do System Dynamics and Network Analysis?")
 st.warning("⚠️ This tool assumes a single view in the Vensim Model.")
 
 st.markdown("""
 Upload a `.mdl` file. This tool will:  
-🔹 Extract nodes & edges  
-🔹 Display node & edge tables  
-🔹 Show interactive network graph  
-🔹 Detect & select feedback loops to highlight  
-🔹 Download node & edge CSVs  
+🔹 **Extract** nodes & edges  
+🔹 **Display** interactive network graph  
+🔹 **Detect** feedback loops to highlight  
+🔹 **Download** node & edge as CSVs  
 """)
 
 # --- File upload ---
