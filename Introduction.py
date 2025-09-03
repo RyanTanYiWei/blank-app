@@ -67,19 +67,22 @@ of existing model versions as part of your workflow.
 
 #### 👈 Key Tools
 1. **⚖️ Version Comparison**  
-   Compare two versions of a model not just visually, but also at the level of their **mathematical formulation**. 
-   This ensures consistency and reveals meaningful changes beyond the visual diagrams.
+   Compare two versions of a model at the level of their **mathematical formulation**. This ensures that any changes 
+   affecting the model’s computations are detected, while purely visual or aesthetic changes—such as colors, 
+   arrows, or repositioned variables in views—are ignored.
 
 2. **🧩 Sub Model Analysis**  
-   When a model has multiple views representing different modules, this tool helps you understand 
-   how modules are linked through shadow variables. It exposes the **linkages** embedded in the SD model, 
-   making it easier to understand the conceptual structure of the model.
+   Typically, a large model uses multiple views to represent different modules/submodels as a way to conceptually 
+   organize the complexity of the modelled system. This tool describes the **inter-module relationships**, as a means 
+   to understand an existing model structure or to help in compartmentalising the model more intentionally.
 
 3. **🕸 CLD to Network Conversion**  
-   Convert causal loop diagrams (CLDs) from Vensim to typical **network formats** (i.e., node and edge lists). This tool does not perform any analytical operations; it does only the "conversion", allowing visualization and analysis to be conducted on other plaforms.
+   Convert causal loop diagrams (CLDs) from Vensim to typical **network formats** (i.e., node and edge lists). 
+   This tool does not perform any analytical operations; it does only the "conversion", allowing visualization 
+   and analysis to be conducted on other plaforms.
 ---
 
-#### 🔮 Future Enhancements
+##### 🔮 Future Enhancements
 - *(Sandeep)* **Improve colour schemes** in Version Comparison to make differences easier to spot.  
 - *(Sandeep)* **Enable saving and uploading of parsed files** to reduce waiting times when re-running analyses.  
 - *(Ryan)* **Provide useful network metrics** (e.g., centrality measures, feedback loop detection) in CLD to Network Conversion to enrich insights beyond structural export. 
